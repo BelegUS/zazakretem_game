@@ -1,0 +1,4 @@
+services:
+#    za_zakretem_models.example:
+#        class: ZaZakretem\ModelsBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

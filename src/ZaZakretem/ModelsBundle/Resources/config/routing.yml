@@ -1,0 +1,3 @@
+za_zakretem_models_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ZaZakretemModelsBundle:Default:index }

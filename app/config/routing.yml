@@ -1,3 +1,7 @@
+za_zakretem_models:
+    resource: "@ZaZakretemModelsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
