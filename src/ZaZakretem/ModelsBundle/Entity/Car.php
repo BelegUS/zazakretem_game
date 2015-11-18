@@ -90,5 +90,350 @@ class Car
      */
     protected $aspiration;
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set brandId
+     *
+     * @param integer $brandId
+     *
+     * @return Car
+     */
+    public function setBrandId($brandId)
+    {
+        $this->brandId = $brandId;
+
+        return $this;
+    }
+
+    /**
+     * Get brandId
+     *
+     * @return integer
+     */
+    public function getBrandId()
+    {
+        return $this->brandId;
+    }
+
+    /**
+     * Set model
+     *
+     * @param string $model
+     *
+     * @return Car
+     */
+    public function setModel($model)
+    {
+        $this->model = $model;
+
+        return $this;
+    }
+
+    /**
+     * Get model
+     *
+     * @return string
+     */
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Set horsepower
+     *
+     * @param integer $horsepower
+     *
+     * @return Car
+     */
+    public function setHorsepower($horsepower)
+    {
+        $this->horsepower = $horsepower;
+
+        return $this;
+    }
+
+    /**
+     * Get horsepower
+     *
+     * @return integer
+     */
+    public function getHorsepower()
+    {
+        return $this->horsepower;
+    }
+
+    /**
+     * Set torque
+     *
+     * @param integer $torque
+     *
+     * @return Car
+     */
+    public function setTorque($torque)
+    {
+        $this->torque = $torque;
+
+        return $this;
+    }
+
+    /**
+     * Get torque
+     *
+     * @return integer
+     */
+    public function getTorque()
+    {
+        return $this->torque;
+    }
+
+    /**
+     * Set mass
+     *
+     * @param integer $mass
+     *
+     * @return Car
+     */
+    public function setMass($mass)
+    {
+        $this->mass = $mass;
+
+        return $this;
+    }
+
+    /**
+     * Get mass
+     *
+     * @return integer
+     */
+    public function getMass()
+    {
+        return $this->mass;
+    }
+
+    /**
+     * Set vmax
+     *
+     * @param integer $vmax
+     *
+     * @return Car
+     */
+    public function setVmax($vmax)
+    {
+        $this->vmax = $vmax;
+
+        return $this;
+    }
+
+    /**
+     * Get vmax
+     *
+     * @return integer
+     */
+    public function getVmax()
+    {
+        return $this->vmax;
+    }
+
+    /**
+     * Set acceleration
+     *
+     * @param float $acceleration
+     *
+     * @return Car
+     */
+    public function setAcceleration($acceleration)
+    {
+        $this->acceleration = $acceleration;
+
+        return $this;
+    }
+
+    /**
+     * Get acceleration
+     *
+     * @return float
+     */
+    public function getAcceleration()
+    {
+        return $this->acceleration;
+    }
+
+    /**
+     * Set handling
+     *
+     * @param integer $handling
+     *
+     * @return Car
+     */
+    public function setHandling($handling)
+    {
+        $this->handling = $handling;
+
+        return $this;
+    }
+
+    /**
+     * Get handling
+     *
+     * @return integer
+     */
+    public function getHandling()
+    {
+        return $this->handling;
+    }
+
+    /**
+     * Set drivetrainId
+     *
+     * @param integer $drivetrainId
+     *
+     * @return Car
+     */
+    public function setDrivetrainId($drivetrainId)
+    {
+        $this->drivetrainId = $drivetrainId;
+
+        return $this;
+    }
+
+    /**
+     * Get drivetrainId
+     *
+     * @return integer
+     */
+    public function getDrivetrainId()
+    {
+        return $this->drivetrainId;
+    }
+
+    /**
+     * Set aspirationId
+     *
+     * @param integer $aspirationId
+     *
+     * @return Car
+     */
+    public function setAspirationId($aspirationId)
+    {
+        $this->aspirationId = $aspirationId;
+
+        return $this;
+    }
+
+    /**
+     * Get aspirationId
+     *
+     * @return integer
+     */
+    public function getAspirationId()
+    {
+        return $this->aspirationId;
+    }
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Car
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set brand
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\Brand $brand
+     *
+     * @return Car
+     */
+    public function setBrand(\ZaZakretem\ModelsBundle\Entity\Brand $brand = null)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get brand
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\Brand
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * Set drivetrain
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\Drivetrain $drivetrain
+     *
+     * @return Car
+     */
+    public function setDrivetrain(\ZaZakretem\ModelsBundle\Entity\Drivetrain $drivetrain = null)
+    {
+        $this->drivetrain = $drivetrain;
+
+        return $this;
+    }
+
+    /**
+     * Get drivetrain
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\Drivetrain
+     */
+    public function getDrivetrain()
+    {
+        return $this->drivetrain;
+    }
+
+    /**
+     * Set aspiration
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\Aspiration $aspiration
+     *
+     * @return Car
+     */
+    public function setAspiration(\ZaZakretem\ModelsBundle\Entity\Aspiration $aspiration = null)
+    {
+        $this->aspiration = $aspiration;
+
+        return $this;
+    }
+
+    /**
+     * Get aspiration
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\Aspiration
+     */
+    public function getAspiration()
+    {
+        return $this->aspiration;
+    }
+}

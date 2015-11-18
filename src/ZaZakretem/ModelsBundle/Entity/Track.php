@@ -42,5 +42,151 @@ class Track
      */
     private $modificators;
 
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->modificators = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Track
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Track
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set startCoordinatesJson
+     *
+     * @param array $startCoordinatesJson
+     *
+     * @return Track
+     */
+    public function setStartCoordinatesJson($startCoordinatesJson)
+    {
+        $this->startCoordinatesJson = $startCoordinatesJson;
+
+        return $this;
+    }
+
+    /**
+     * Get startCoordinatesJson
+     *
+     * @return array
+     */
+    public function getStartCoordinatesJson()
+    {
+        return $this->startCoordinatesJson;
+    }
+
+    /**
+     * Set endCoordinatesJson
+     *
+     * @param array $endCoordinatesJson
+     *
+     * @return Track
+     */
+    public function setEndCoordinatesJson($endCoordinatesJson)
+    {
+        $this->endCoordinatesJson = $endCoordinatesJson;
+
+        return $this;
+    }
+
+    /**
+     * Get endCoordinatesJson
+     *
+     * @return array
+     */
+    public function getEndCoordinatesJson()
+    {
+        return $this->endCoordinatesJson;
+    }
+
+    /**
+     * Add modificator
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\TrackPartModificator $modificator
+     *
+     * @return Track
+     */
+    public function addModificator(\ZaZakretem\ModelsBundle\Entity\TrackPartModificator $modificator)
+    {
+        $this->modificators[] = $modificator;
+
+        return $this;
+    }
+
+    /**
+     * Remove modificator
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\TrackPartModificator $modificator
+     */
+    public function removeModificator(\ZaZakretem\ModelsBundle\Entity\TrackPartModificator $modificator)
+    {
+        $this->modificators->removeElement($modificator);
+    }
+
+    /**
+     * Get modificators
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getModificators()
+    {
+        return $this->modificators;
+    }
+}

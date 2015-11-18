@@ -33,5 +33,100 @@ class DrivetrainPart
      * @ORM\JoinColumn(name="drivetrain_id", referencedColumnName="id")
      */
     private $aspiration;
-}
 
+    /**
+     * Set partId
+     *
+     * @param integer $partId
+     *
+     * @return DrivetrainPart
+     */
+    public function setPartId($partId)
+    {
+        $this->partId = $partId;
+
+        return $this;
+    }
+
+    /**
+     * Get partId
+     *
+     * @return integer
+     */
+    public function getPartId()
+    {
+        return $this->partId;
+    }
+
+    /**
+     * Set drivetrainId
+     *
+     * @param integer $drivetrainId
+     *
+     * @return DrivetrainPart
+     */
+    public function setDrivetrainId($drivetrainId)
+    {
+        $this->drivetrainId = $drivetrainId;
+
+        return $this;
+    }
+
+    /**
+     * Get drivetrainId
+     *
+     * @return integer
+     */
+    public function getDrivetrainId()
+    {
+        return $this->drivetrainId;
+    }
+
+    /**
+     * Set part
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\Part $part
+     *
+     * @return DrivetrainPart
+     */
+    public function setPart(\ZaZakretem\ModelsBundle\Entity\Part $part = null)
+    {
+        $this->part = $part;
+
+        return $this;
+    }
+
+    /**
+     * Get part
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\Part
+     */
+    public function getPart()
+    {
+        return $this->part;
+    }
+
+    /**
+     * Set aspiration
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\Drivetrain $aspiration
+     *
+     * @return DrivetrainPart
+     */
+    public function setAspiration(\ZaZakretem\ModelsBundle\Entity\Drivetrain $aspiration = null)
+    {
+        $this->aspiration = $aspiration;
+
+        return $this;
+    }
+
+    /**
+     * Get aspiration
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\Drivetrain
+     */
+    public function getAspiration()
+    {
+        return $this->aspiration;
+    }
+}
