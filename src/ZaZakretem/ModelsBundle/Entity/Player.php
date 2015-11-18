@@ -2,6 +2,8 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="players")
@@ -66,7 +68,7 @@ class Player
     private $xp;
 
     /**
-     * @OneToMany(targetEntity="PlayerCar", mappedBy="player")
+     * @ORM\OneToMany(targetEntity="PlayerCar", mappedBy="player")
      */
     private $cars;
 

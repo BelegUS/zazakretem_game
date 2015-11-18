@@ -2,6 +2,8 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="cars")
@@ -71,20 +73,20 @@ class Car
     private $price;
 
     /**
-     * @ManyToOne(targetEntity="Brand", inversedBy="cars")
-     * @JoinColumn(name="brand_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Brand", inversedBy="cars")
+     * @ORM\JoinColumn(name="brand_id", referencedColumnName="id")
      */
     protected $brand;
 
     /**
-     * @ManyToOne(targetEntity="Drivetrain", inversedBy="cars")
-     * @JoinColumn(name="drivetrain_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Drivetrain", inversedBy="cars")
+     * @ORM\JoinColumn(name="drivetrain_id", referencedColumnName="id")
      */
     protected $drivetrain;
 
     /**
-     * @ManyToOne(targetEntity="Aspiration", inversedBy="cars")
-     * @JoinColumn(name="aspiration_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Aspiration", inversedBy="cars")
+     * @ORM\JoinColumn(name="aspiration_id", referencedColumnName="id")
      */
     protected $aspiration;
 

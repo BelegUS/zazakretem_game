@@ -2,6 +2,7 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -23,7 +24,7 @@ class Brand
     private $name;
 
     /**
-     * @OneToMany(targetEntity="Car", mappedBy="brand")
+     * @ORM\OneToMany(targetEntity="Car", mappedBy="brand")
      */
     protected $cars;
 

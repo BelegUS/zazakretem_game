@@ -2,6 +2,7 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -28,7 +29,7 @@ class PartType
     private $description;
 
     /**
-     * @OneToMany(targetEntity="Part", mappedBy="type")
+     * @ORM\OneToMany(targetEntity="Part", mappedBy="type")
      */
     protected $parts;
 

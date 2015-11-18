@@ -2,6 +2,8 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="players_cars")
@@ -51,50 +53,50 @@ class PlayerCar
     private $aspirationPartId;
 
     /**
-     * @ManyToOne(targetEntity="Car")
-     * @JoinColumn(name="car_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Car")
+     * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
 
     /**
-     * @ManyToOne(targetEntity="Player", inversedBy="cars")
-     * @JoinColumn(name="player_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Player", inversedBy="cars")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      */
     private $player;
 
     /**
-     * @ManyToOne(targetEntity="Part")
-     * @JoinColumn(name="engine_tune_part_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Part")
+     * @ORM\JoinColumn(name="engine_tune_part_id", referencedColumnName="id")
      */
     private $engineTune;
 
     /**
-     * @ManyToOne(targetEntity="Part")
-     * @JoinColumn(name="mass_reduction_part_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Part")
+     * @ORM\JoinColumn(name="mass_reduction_part_id", referencedColumnName="id")
      */
     private $massReduction;
 
     /**
-     * @ManyToOne(targetEntity="Part")
-     * @JoinColumn(name="suspension_part_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Part")
+     * @ORM\JoinColumn(name="suspension_part_id", referencedColumnName="id")
      */
     private $suspension;
 
     /**
-     * @ManyToOne(targetEntity="Part")
-     * @JoinColumn(name="brakes_part_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Part")
+     * @ORM\JoinColumn(name="brakes_part_id", referencedColumnName="id")
      */
     private $brakes;
 
     /**
-     * @ManyToOne(targetEntity="DrivetrainPart")
-     * @JoinColumn(name="drivetrain_part_id", referencedColumnName="drivetrain_id")
+     * @ORM\ManyToOne(targetEntity="DrivetrainPart")
+     * @ORM\JoinColumn(name="drivetrain_part_id", referencedColumnName="drivetrain_id")
      */
     private $drivetrain;
 
     /**
-     * @ManyToOne(targetEntity="AspirationPart")
-     * @JoinColumn(name="aspiration_part_id", referencedColumnName="aspiration_id")
+     * @ORM\ManyToOne(targetEntity="AspirationPart")
+     * @ORM\JoinColumn(name="aspiration_part_id", referencedColumnName="aspiration_id")
      */
     private $aspiration;
 

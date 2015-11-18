@@ -2,6 +2,8 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="parts")
@@ -72,8 +74,8 @@ class Part
     private $typeId;
 
     /**
-     * @ManyToOne(targetEntity="PartsTypes", inversedBy="parts")
-     * @JoinColumn(name="type_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="PartType", inversedBy="parts")
+     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;
 

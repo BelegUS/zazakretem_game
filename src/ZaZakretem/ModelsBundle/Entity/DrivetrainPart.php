@@ -2,6 +2,8 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="drivetrains_parts")
@@ -21,14 +23,14 @@ class DrivetrainPart
     private $drivetrainId;
 
     /**
-     * @OneToOne(targetEntity="Part")
-     * @JoinColumn(name="part_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="Part")
+     * @ORM\JoinColumn(name="part_id", referencedColumnName="id")
      */
     private $part;
 
     /**
-     * @ManyToOne(targetEntity="Drivetrain", inversedBy="parts")
-     * @JoinColumn(name="drivetrain_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Drivetrain", inversedBy="parts")
+     * @ORM\JoinColumn(name="drivetrain_id", referencedColumnName="id")
      */
     private $aspiration;
 }

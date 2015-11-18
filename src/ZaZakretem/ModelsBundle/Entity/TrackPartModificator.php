@@ -2,6 +2,8 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="tracks_parts_modificators")
@@ -31,14 +33,14 @@ class TrackPartModificator
     private $modificator;
 
     /**
-     * @ManyToOne(targetEntity="PartType")
-     * @JoinColumn(name="part_type_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="PartType")
+     * @ORM\JoinColumn(name="part_type_id", referencedColumnName="id")
      */
     private $partType;
 
     /**
-     * @ManyToOne(targetEntity="Track", inversedBy="modificators")
-     * @JoinColumn(name="track_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Track", inversedBy="modificators")
+     * @ORM\JoinColumn(name="track_id", referencedColumnName="id")
      */
     private $track;
 

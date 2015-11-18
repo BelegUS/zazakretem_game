@@ -2,6 +2,7 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -28,12 +29,12 @@ class Drivetrain
     private $description;
 
     /**
-     * @OneToMany(targetEntity="Car", mappedBy="drivetrain")
+     * @ORM\OneToMany(targetEntity="Car", mappedBy="drivetrain")
      */
     private $cars;
 
     /**
-     * @OneToMany(targetEntity="DrivetrainPart", mappedBy="drivetrain")
+     * @ORM\OneToMany(targetEntity="DrivetrainPart", mappedBy="drivetrain")
      */
     private $parts;
 

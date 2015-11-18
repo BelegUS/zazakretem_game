@@ -2,6 +2,8 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="tracks")
@@ -36,7 +38,7 @@ class Track
     private $endCoordinatesJson;
 
     /**
-     * @OneToMany(targetEntity="TrackPartModificator", mappedBy="track")
+     * @ORM\OneToMany(targetEntity="TrackPartModificator", mappedBy="track")
      */
     private $modificators;
 
