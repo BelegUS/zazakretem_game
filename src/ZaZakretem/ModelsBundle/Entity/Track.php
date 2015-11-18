@@ -35,5 +35,10 @@ class Track
      */
     private $endCoordinatesJson;
 
+    /**
+     * @OneToMany(targetEntity="TrackPartModificator", mappedBy="track")
+     */
+    private $modificators;
+
 }
 

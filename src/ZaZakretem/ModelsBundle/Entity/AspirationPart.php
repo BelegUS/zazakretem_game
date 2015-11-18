@@ -24,13 +24,13 @@ class AspirationPart
      * @OneToOne(targetEntity="Part")
      * @JoinColumn(name="part_id", referencedColumnName="id")
      */
-    protected $part;
+    private $part;
 
     /**
      * @ManyToOne(targetEntity="Aspiration", inversedBy="parts")
      * @JoinColumn(name="aspiration_id", referencedColumnName="id")
      */
-    protected $aspiration;
+    private $aspiration;
 
 }
 

@@ -24,12 +24,12 @@ class DrivetrainPart
      * @OneToOne(targetEntity="Part")
      * @JoinColumn(name="part_id", referencedColumnName="id")
      */
-    protected $part;
+    private $part;
 
     /**
      * @ManyToOne(targetEntity="Drivetrain", inversedBy="parts")
      * @JoinColumn(name="drivetrain_id", referencedColumnName="id")
      */
-    protected $aspiration;
+    private $aspiration;
 }
 

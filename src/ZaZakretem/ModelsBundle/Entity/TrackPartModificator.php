@@ -30,5 +30,17 @@ class TrackPartModificator
      */
     private $modificator;
 
+    /**
+     * @ManyToOne(targetEntity="PartType")
+     * @JoinColumn(name="part_type_id", referencedColumnName="id")
+     */
+    private $partType;
+
+    /**
+     * @ManyToOne(targetEntity="Track", inversedBy="modificators")
+     * @JoinColumn(name="track_id", referencedColumnName="id")
+     */
+    private $track;
+
 }
 

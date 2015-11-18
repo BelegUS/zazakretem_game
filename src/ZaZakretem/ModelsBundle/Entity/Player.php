@@ -65,6 +65,15 @@ class Player
      */
     private $xp;
 
+    /**
+     * @OneToMany(targetEntity="PlayerCar", mappedBy="player")
+     */
+    private $cars;
+
+    public function __construct() {
+        $this->cars = new ArrayCollection();
+    }
+
 
 }
 

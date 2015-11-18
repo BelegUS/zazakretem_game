@@ -50,6 +50,52 @@ class PlayerCar
      */
     private $aspirationPartId;
 
+    /**
+     * @ManyToOne(targetEntity="Car")
+     * @JoinColumn(name="car_id", referencedColumnName="id")
+     */
+    private $car;
 
+    /**
+     * @ManyToOne(targetEntity="Player", inversedBy="cars")
+     * @JoinColumn(name="player_id", referencedColumnName="id")
+     */
+    private $player;
+
+    /**
+     * @ManyToOne(targetEntity="Part")
+     * @JoinColumn(name="engine_tune_part_id", referencedColumnName="id")
+     */
+    private $engineTune;
+
+    /**
+     * @ManyToOne(targetEntity="Part")
+     * @JoinColumn(name="mass_reduction_part_id", referencedColumnName="id")
+     */
+    private $massReduction;
+
+    /**
+     * @ManyToOne(targetEntity="Part")
+     * @JoinColumn(name="suspension_part_id", referencedColumnName="id")
+     */
+    private $suspension;
+
+    /**
+     * @ManyToOne(targetEntity="Part")
+     * @JoinColumn(name="brakes_part_id", referencedColumnName="id")
+     */
+    private $brakes;
+
+    /**
+     * @ManyToOne(targetEntity="DrivetrainPart")
+     * @JoinColumn(name="drivetrain_part_id", referencedColumnName="drivetrain_id")
+     */
+    private $drivetrain;
+
+    /**
+     * @ManyToOne(targetEntity="AspirationPart")
+     * @JoinColumn(name="aspiration_part_id", referencedColumnName="aspiration_id")
+     */
+    private $aspiration;
 
 }

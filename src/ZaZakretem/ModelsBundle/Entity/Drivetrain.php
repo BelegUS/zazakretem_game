@@ -30,12 +30,12 @@ class Drivetrain
     /**
      * @OneToMany(targetEntity="Car", mappedBy="drivetrain")
      */
-    protected $cars;
+    private $cars;
 
     /**
      * @OneToMany(targetEntity="DrivetrainPart", mappedBy="drivetrain")
      */
-    protected $parts;
+    private $parts;
 
     public function __construct() {
         $this->cars = new ArrayCollection();

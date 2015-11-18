@@ -75,7 +75,7 @@ class Part
      * @ManyToOne(targetEntity="PartsTypes", inversedBy="parts")
      * @JoinColumn(name="type_id", referencedColumnName="id")
      */
-    protected $type;
+    private $type;
 
 }
 
