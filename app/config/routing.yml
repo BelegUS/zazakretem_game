@@ -1,3 +1,7 @@
+za_zakretem_user:
+    resource: "@ZaZakretemUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 za_zakretem_models:
     resource: "@ZaZakretemModelsBundle/Resources/config/routing.yml"
     prefix:   /
