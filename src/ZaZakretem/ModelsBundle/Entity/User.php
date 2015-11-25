@@ -1,13 +1,13 @@
 <?php
 
-namespace ZaZakretem\UserBundle\Entity;
+namespace ZaZakretem\ModelsBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="players")
+ * @ORM\Table(name="users")
  */
 class User extends BaseUser
 {
@@ -17,6 +17,16 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="Player", mappedBy="user")
+     */
+    private $player;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $registrationDate = 'CURRENT_TIMESTAMP';
 
     public function __construct()
     {

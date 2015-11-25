@@ -18,24 +18,9 @@ class Player
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\OneToOne(targetEntity="User", inversedBy="player")
      */
-    private $name;
-
-    /**
-     * @ORM\Column(type="string", length=50)
-     */
-    private $password;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
-    private $registrationDate = 'CURRENT_TIMESTAMP';
-
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $email;
+    private $user;
 
     /**
      * @ORM\Column(type="integer")
@@ -75,8 +60,6 @@ class Player
     public function __construct() {
         $this->cars = new ArrayCollection();
     }
-
-
 
     /**
      * Get id
