@@ -18,16 +18,6 @@ class TrackPartModificator
     private $id;
 
     /**
-     * @ORM\Column(type="integer", name="part_type_id")
-     */
-    private $partTypeId;
-
-    /**
-     * @ORM\Column(type="integer", name="track_id")
-     */
-    private $trackId;
-
-    /**
      * @ORM\Column(type="integer", length=2)
      */
     private $modificator;
@@ -44,7 +34,6 @@ class TrackPartModificator
      */
     private $track;
 
-
     /**
      * Get id
      *
@@ -53,54 +42,6 @@ class TrackPartModificator
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set partTypeId
-     *
-     * @param integer $partTypeId
-     *
-     * @return TrackPartModificator
-     */
-    public function setPartTypeId($partTypeId)
-    {
-        $this->partTypeId = $partTypeId;
-
-        return $this;
-    }
-
-    /**
-     * Get partTypeId
-     *
-     * @return integer
-     */
-    public function getPartTypeId()
-    {
-        return $this->partTypeId;
-    }
-
-    /**
-     * Set trackId
-     *
-     * @param integer $trackId
-     *
-     * @return TrackPartModificator
-     */
-    public function setTrackId($trackId)
-    {
-        $this->trackId = $trackId;
-
-        return $this;
-    }
-
-    /**
-     * Get trackId
-     *
-     * @return integer
-     */
-    public function getTrackId()
-    {
-        return $this->trackId;
     }
 
     /**

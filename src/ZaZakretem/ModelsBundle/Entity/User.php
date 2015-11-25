@@ -28,9 +28,52 @@ class User extends BaseUser
      */
     protected $registrationDate = 'CURRENT_TIMESTAMP';
 
-    public function __construct()
+
+    /**
+     * Set registrationDate
+     *
+     * @param \DateTime $registrationDate
+     *
+     * @return User
+     */
+    public function setRegistrationDate($registrationDate)
     {
-        parent::__construct();
-        // your own logic
+        $this->registrationDate = $registrationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get registrationDate
+     *
+     * @return \DateTime
+     */
+    public function getRegistrationDate()
+    {
+        return $this->registrationDate;
+    }
+
+    /**
+     * Set player
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\Player $player
+     *
+     * @return User
+     */
+    public function setPlayer(\ZaZakretem\ModelsBundle\Entity\Player $player = null)
+    {
+        $this->player = $player;
+
+        return $this;
+    }
+
+    /**
+     * Get player
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\Player
+     */
+    public function getPlayer()
+    {
+        return $this->player;
     }
 }

@@ -69,16 +69,10 @@ class Part
     private $description;
 
     /**
-     * @ORM\Column(type="integer", name="type_id")
-     */
-    private $typeId;
-
-    /**
      * @ORM\ManyToOne(targetEntity="PartType", inversedBy="parts")
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;
-
 
     /**
      * Get id
@@ -328,30 +322,6 @@ class Part
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * Set typeId
-     *
-     * @param integer $typeId
-     *
-     * @return Part
-     */
-    public function setTypeId($typeId)
-    {
-        $this->typeId = $typeId;
-
-        return $this;
-    }
-
-    /**
-     * Get typeId
-     *
-     * @return integer
-     */
-    public function getTypeId()
-    {
-        return $this->typeId;
     }
 
     /**

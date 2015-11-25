@@ -43,7 +43,6 @@ class Drivetrain
         $this->parts = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *

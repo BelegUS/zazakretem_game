@@ -11,77 +11,20 @@ use Doctrine\ORM\Mapping as ORM;
 class AspirationPart
 {
     /**
-     * @ORM\Column(type="integer", name="part_id")
      * @ORM\Id
-     */
-    private $partId;
-
-    /**
-     * @ORM\Column(type="integer", name="aspiration_id")
-     * @ORM\Id
-     */
-    private $aspirationId;
-
-    /**
      * @ORM\OneToOne(targetEntity="Part")
      * @ORM\JoinColumn(name="part_id", referencedColumnName="id")
      */
     private $part;
 
     /**
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Aspiration", inversedBy="parts")
      * @ORM\JoinColumn(name="aspiration_id", referencedColumnName="id")
      */
     private $aspiration;
 
 
-    /**
-     * Set partId
-     *
-     * @param integer $partId
-     *
-     * @return AspirationPart
-     */
-    public function setPartId($partId)
-    {
-        $this->partId = $partId;
-
-        return $this;
-    }
-
-    /**
-     * Get partId
-     *
-     * @return integer
-     */
-    public function getPartId()
-    {
-        return $this->partId;
-    }
-
-    /**
-     * Set aspirationId
-     *
-     * @param integer $aspirationId
-     *
-     * @return AspirationPart
-     */
-    public function setAspirationId($aspirationId)
-    {
-        $this->aspirationId = $aspirationId;
-
-        return $this;
-    }
-
-    /**
-     * Get aspirationId
-     *
-     * @return integer
-     */
-    public function getAspirationId()
-    {
-        return $this->aspirationId;
-    }
 
     /**
      * Set part
@@ -90,7 +33,7 @@ class AspirationPart
      *
      * @return AspirationPart
      */
-    public function setPart(\ZaZakretem\ModelsBundle\Entity\Part $part = null)
+    public function setPart(\ZaZakretem\ModelsBundle\Entity\Part $part)
     {
         $this->part = $part;
 
@@ -114,7 +57,7 @@ class AspirationPart
      *
      * @return AspirationPart
      */
-    public function setAspiration(\ZaZakretem\ModelsBundle\Entity\Aspiration $aspiration = null)
+    public function setAspiration(\ZaZakretem\ModelsBundle\Entity\Aspiration $aspiration)
     {
         $this->aspiration = $aspiration;
 

@@ -11,76 +11,19 @@ use Doctrine\ORM\Mapping as ORM;
 class DrivetrainPart
 {
     /**
-     * @ORM\Column(type="integer", name="part_id")
      * @ORM\Id
-     */
-    private $partId;
-
-    /**
-     * @ORM\Column(type="integer", name="drivetrain_id")
-     * @ORM\Id
-     */
-    private $drivetrainId;
-
-    /**
      * @ORM\OneToOne(targetEntity="Part")
      * @ORM\JoinColumn(name="part_id", referencedColumnName="id")
      */
     private $part;
 
     /**
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Drivetrain", inversedBy="parts")
      * @ORM\JoinColumn(name="drivetrain_id", referencedColumnName="id")
      */
-    private $aspiration;
+    private $drivetrain;
 
-    /**
-     * Set partId
-     *
-     * @param integer $partId
-     *
-     * @return DrivetrainPart
-     */
-    public function setPartId($partId)
-    {
-        $this->partId = $partId;
-
-        return $this;
-    }
-
-    /**
-     * Get partId
-     *
-     * @return integer
-     */
-    public function getPartId()
-    {
-        return $this->partId;
-    }
-
-    /**
-     * Set drivetrainId
-     *
-     * @param integer $drivetrainId
-     *
-     * @return DrivetrainPart
-     */
-    public function setDrivetrainId($drivetrainId)
-    {
-        $this->drivetrainId = $drivetrainId;
-
-        return $this;
-    }
-
-    /**
-     * Get drivetrainId
-     *
-     * @return integer
-     */
-    public function getDrivetrainId()
-    {
-        return $this->drivetrainId;
-    }
 
     /**
      * Set part
@@ -89,7 +32,7 @@ class DrivetrainPart
      *
      * @return DrivetrainPart
      */
-    public function setPart(\ZaZakretem\ModelsBundle\Entity\Part $part = null)
+    public function setPart(\ZaZakretem\ModelsBundle\Entity\Part $part)
     {
         $this->part = $part;
 
@@ -107,26 +50,26 @@ class DrivetrainPart
     }
 
     /**
-     * Set aspiration
+     * Set drivetrain
      *
-     * @param \ZaZakretem\ModelsBundle\Entity\Drivetrain $aspiration
+     * @param \ZaZakretem\ModelsBundle\Entity\Drivetrain $drivetrain
      *
      * @return DrivetrainPart
      */
-    public function setAspiration(\ZaZakretem\ModelsBundle\Entity\Drivetrain $aspiration = null)
+    public function setDrivetrain(\ZaZakretem\ModelsBundle\Entity\Drivetrain $drivetrain)
     {
-        $this->aspiration = $aspiration;
+        $this->drivetrain = $drivetrain;
 
         return $this;
     }
 
     /**
-     * Get aspiration
+     * Get drivetrain
      *
      * @return \ZaZakretem\ModelsBundle\Entity\Drivetrain
      */
-    public function getAspiration()
+    public function getDrivetrain()
     {
-        return $this->aspiration;
+        return $this->drivetrain;
     }
 }

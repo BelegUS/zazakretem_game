@@ -18,11 +18,6 @@ class Car
     private $id;
 
     /**
-     * @ORM\Column(type="integer", name="brand_id")
-     */
-    private $brandId;
-
-    /**
      * @ORM\Column(type="string", length=150)
      */
     private $model;
@@ -58,16 +53,6 @@ class Car
     private $handling;
 
     /**
-     * @ORM\Column(type="integer", name="drivetrain_id")
-     */
-    private $drivetrainId;
-
-    /**
-     * @ORM\Column(type="integer", name="aspiration_id")
-     */
-    private $aspirationId;
-
-    /**
      * @ORM\Column(type="integer", length=10)
      */
     private $price;
@@ -99,30 +84,6 @@ class Car
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set brandId
-     *
-     * @param integer $brandId
-     *
-     * @return Car
-     */
-    public function setBrandId($brandId)
-    {
-        $this->brandId = $brandId;
-
-        return $this;
-    }
-
-    /**
-     * Get brandId
-     *
-     * @return integer
-     */
-    public function getBrandId()
-    {
-        return $this->brandId;
     }
 
     /**
@@ -291,54 +252,6 @@ class Car
     public function getHandling()
     {
         return $this->handling;
-    }
-
-    /**
-     * Set drivetrainId
-     *
-     * @param integer $drivetrainId
-     *
-     * @return Car
-     */
-    public function setDrivetrainId($drivetrainId)
-    {
-        $this->drivetrainId = $drivetrainId;
-
-        return $this;
-    }
-
-    /**
-     * Get drivetrainId
-     *
-     * @return integer
-     */
-    public function getDrivetrainId()
-    {
-        return $this->drivetrainId;
-    }
-
-    /**
-     * Set aspirationId
-     *
-     * @param integer $aspirationId
-     *
-     * @return Car
-     */
-    public function setAspirationId($aspirationId)
-    {
-        $this->aspirationId = $aspirationId;
-
-        return $this;
-    }
-
-    /**
-     * Get aspirationId
-     *
-     * @return integer
-     */
-    public function getAspirationId()
-    {
-        return $this->aspirationId;
     }
 
     /**

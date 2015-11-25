@@ -43,7 +43,6 @@ class Aspiration
         $this->parts = new ArrayCollection();
     }
 
-
     /**
      * Get id
      *

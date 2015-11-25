@@ -11,56 +11,16 @@ use Doctrine\ORM\Mapping as ORM;
 class PlayerCar
 {
     /**
-     * @ORM\Column(type="integer", name="car_id")
      * @ORM\Id
-     */
-    private $carId;
-
-    /**
-     * @ORM\Column(type="integer", name="player_id")
-     * @ORM\Id
-     */
-    private $playerId;
-
-    /**
-     * @ORM\Column(type="integer", name="engine_tune_part_id")
-     */
-    private $engineTunePartId;
-
-    /**
-     * @ORM\Column(type="integer", name="mass_reduction_part_id")
-     */
-    private $massReductionPartId;
-
-    /**
-     * @ORM\Column(type="integer", name="suspension_part_id")
-     */
-    private $suspensionPartId;
-
-    /**
-     * @ORM\Column(type="integer", name="brakes_part_id")
-     */
-    private $brakesPartId;
-
-    /**
-     * @ORM\Column(type="integer", name="drivetrain_part_id")
-     */
-    private $drivetrainPartId;
-
-    /**
-     * @ORM\Column(type="integer", name="aspiration_part_id")
-     */
-    private $aspirationPartId;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Car")
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
 
     /**
+     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Player", inversedBy="cars")
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="user_id")
      */
     private $player;
 
@@ -100,199 +60,6 @@ class PlayerCar
      */
     private $aspiration;
 
-
-    /**
-     * Set carId
-     *
-     * @param integer $carId
-     *
-     * @return PlayerCar
-     */
-    public function setCarId($carId)
-    {
-        $this->carId = $carId;
-
-        return $this;
-    }
-
-    /**
-     * Get carId
-     *
-     * @return integer
-     */
-    public function getCarId()
-    {
-        return $this->carId;
-    }
-
-    /**
-     * Set playerId
-     *
-     * @param integer $playerId
-     *
-     * @return PlayerCar
-     */
-    public function setPlayerId($playerId)
-    {
-        $this->playerId = $playerId;
-
-        return $this;
-    }
-
-    /**
-     * Get playerId
-     *
-     * @return integer
-     */
-    public function getPlayerId()
-    {
-        return $this->playerId;
-    }
-
-    /**
-     * Set engineTunePartId
-     *
-     * @param integer $engineTunePartId
-     *
-     * @return PlayerCar
-     */
-    public function setEngineTunePartId($engineTunePartId)
-    {
-        $this->engineTunePartId = $engineTunePartId;
-
-        return $this;
-    }
-
-    /**
-     * Get engineTunePartId
-     *
-     * @return integer
-     */
-    public function getEngineTunePartId()
-    {
-        return $this->engineTunePartId;
-    }
-
-    /**
-     * Set massReductionPartId
-     *
-     * @param integer $massReductionPartId
-     *
-     * @return PlayerCar
-     */
-    public function setMassReductionPartId($massReductionPartId)
-    {
-        $this->massReductionPartId = $massReductionPartId;
-
-        return $this;
-    }
-
-    /**
-     * Get massReductionPartId
-     *
-     * @return integer
-     */
-    public function getMassReductionPartId()
-    {
-        return $this->massReductionPartId;
-    }
-
-    /**
-     * Set suspensionPartId
-     *
-     * @param integer $suspensionPartId
-     *
-     * @return PlayerCar
-     */
-    public function setSuspensionPartId($suspensionPartId)
-    {
-        $this->suspensionPartId = $suspensionPartId;
-
-        return $this;
-    }
-
-    /**
-     * Get suspensionPartId
-     *
-     * @return integer
-     */
-    public function getSuspensionPartId()
-    {
-        return $this->suspensionPartId;
-    }
-
-    /**
-     * Set brakesPartId
-     *
-     * @param integer $brakesPartId
-     *
-     * @return PlayerCar
-     */
-    public function setBrakesPartId($brakesPartId)
-    {
-        $this->brakesPartId = $brakesPartId;
-
-        return $this;
-    }
-
-    /**
-     * Get brakesPartId
-     *
-     * @return integer
-     */
-    public function getBrakesPartId()
-    {
-        return $this->brakesPartId;
-    }
-
-    /**
-     * Set drivetrainPartId
-     *
-     * @param integer $drivetrainPartId
-     *
-     * @return PlayerCar
-     */
-    public function setDrivetrainPartId($drivetrainPartId)
-    {
-        $this->drivetrainPartId = $drivetrainPartId;
-
-        return $this;
-    }
-
-    /**
-     * Get drivetrainPartId
-     *
-     * @return integer
-     */
-    public function getDrivetrainPartId()
-    {
-        return $this->drivetrainPartId;
-    }
-
-    /**
-     * Set aspirationPartId
-     *
-     * @param integer $aspirationPartId
-     *
-     * @return PlayerCar
-     */
-    public function setAspirationPartId($aspirationPartId)
-    {
-        $this->aspirationPartId = $aspirationPartId;
-
-        return $this;
-    }
-
-    /**
-     * Get aspirationPartId
-     *
-     * @return integer
-     */
-    public function getAspirationPartId()
-    {
-        return $this->aspirationPartId;
-    }
-
     /**
      * Set car
      *
@@ -300,7 +67,7 @@ class PlayerCar
      *
      * @return PlayerCar
      */
-    public function setCar(\ZaZakretem\ModelsBundle\Entity\Car $car = null)
+    public function setCar(\ZaZakretem\ModelsBundle\Entity\Car $car)
     {
         $this->car = $car;
 
@@ -324,7 +91,7 @@ class PlayerCar
      *
      * @return PlayerCar
      */
-    public function setPlayer(\ZaZakretem\ModelsBundle\Entity\Player $player = null)
+    public function setPlayer(\ZaZakretem\ModelsBundle\Entity\Player $player)
     {
         $this->player = $player;
 

@@ -2,6 +2,7 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,13 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Player
 {
     /**
-     * @ORM\Column(type="integer")
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="player")
      */
     private $user;
@@ -59,112 +54,6 @@ class Player
 
     public function __construct() {
         $this->cars = new ArrayCollection();
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Player
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return Player
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set registrationDate
-     *
-     * @param \DateTime $registrationDate
-     *
-     * @return Player
-     */
-    public function setRegistrationDate($registrationDate)
-    {
-        $this->registrationDate = $registrationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get registrationDate
-     *
-     * @return \DateTime
-     */
-    public function getRegistrationDate()
-    {
-        return $this->registrationDate;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Player
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**
@@ -309,6 +198,30 @@ class Player
     public function getXp()
     {
         return $this->xp;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\User $user
+     *
+     * @return Player
+     */
+    public function setUser(\ZaZakretem\ModelsBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**
