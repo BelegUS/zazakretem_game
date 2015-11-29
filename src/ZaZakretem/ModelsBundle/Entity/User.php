@@ -3,6 +3,7 @@
 namespace ZaZakretem\ModelsBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -24,24 +25,11 @@ class User extends BaseUser
     private $player;
 
     /**
+     * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime")
      */
-    protected $registrationDate = 'CURRENT_TIMESTAMP';
+    protected $registrationDate;
 
-
-    /**
-     * Set registrationDate
-     *
-     * @param \DateTime $registrationDate
-     *
-     * @return User
-     */
-    public function setRegistrationDate($registrationDate)
-    {
-        $this->registrationDate = $registrationDate;
-
-        return $this;
-    }
 
     /**
      * Get registrationDate

@@ -85,3 +85,17 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: ZaZakretem\ModelsBundle\Entity\User
+    registration:
+        confirmation:
+            enabled: true
+            from_email:
+                address:        game@zazakretem.pl
+                sender_name:    Za Zakretem Game
+
+# STOF Doctrine Extensions
+stof_doctrine_extensions:
+    default_locale: en_US
+
+    orm:
+        default:
+          timestampable: true
