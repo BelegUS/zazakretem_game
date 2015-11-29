@@ -1,0 +1,7 @@
+za_zakretem_game_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ZaZakretemGameBundle:Default:index }
+
+_index:
+    path:     /index
+    defaults: { _controller: ZaZakretemGameBundle:Main:index }
