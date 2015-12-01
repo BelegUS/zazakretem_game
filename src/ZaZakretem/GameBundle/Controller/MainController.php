@@ -8,7 +8,7 @@ class MainController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('::index.html.twig', array(
+        return $this->render('::main.html.twig', array(
                 // ...
             ));    }
 

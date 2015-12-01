@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+
+    <body class="login-img3-body">
+
+    <div class="container">
+
+        {% block fos %}
+            {{ parent() }}
+        {% endblock %}
+
+        <form class="login-form" action="{{ path("fos_user_security_check") }}" method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+            <div class="login-wrap">
+                <p class="login-img"><i class="icon_lock_alt"></i></p>
+                {% if error %}
+                    <div class="alert alert-danger"
+                         role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_profile"></i></span>
+                    <input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}"
+                           placeholder="{{ 'security.login.username'|trans }}" autofocus>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                    <input type="password" class="form-control" id="password" name="_password"
+                           placeholder="{{ 'security.login.password'|trans }}">
+                </div>
+                <label class="checkbox">
+                    <input type="checkbox" id="remember_me" name="_remember_me"
+                           value="on"> {{ 'security.login.remember_me'|trans }}
+                    {#<span class="pull-right"> <a href="#"> Forgot Password?</a></span>#}
+                </label>
+                <button class="btn btn-primary btn-lg btn-block" type="submit" id="_submit"
+                        name="_submit">{{ 'security.login.submit'|trans }}</button>
+                {#<button class="btn btn-info btn-lg btn-block" type="submit">Signup</button>#}
+            </div>
+        </form>
+
+    </div>
+
+
+    </body>
+{% endblock %}
+
