@@ -20,7 +20,7 @@ class PlayerCar
     /**
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Player", inversedBy="cars")
-     * @ORM\JoinColumn(name="player_id", referencedColumnName="user_id")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      */
     private $player;
 

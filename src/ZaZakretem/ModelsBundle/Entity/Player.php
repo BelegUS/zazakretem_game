@@ -2,6 +2,8 @@
 
 namespace ZaZakretem\ModelsBundle\Entity;
 
+use FOS\UserBundle\Model\User as BaseUser;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,13 +11,27 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="players")
  */
-class Player
+class Player extends BaseUser
 {
+    const BASE_MONEY = 15000;
+    const BASE_SMARTNESS = 1;
+    const BASE_COMPOSURE = 1;
+    const BASE_REFLEX = 1;
+    const BASE_COURAGE = 1;
+    const BASE_XP = 0;
+
     /**
      * @ORM\Id
-     * @ORM\OneToOne(targetEntity="User", inversedBy="player")
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $user;
+    protected $id;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(type="datetime")
+     */
+    protected $registrationDate;
 
     /**
      * @ORM\Column(type="integer")
@@ -53,7 +69,25 @@ class Player
     private $cars;
 
     public function __construct() {
+        parent::__construct();
         $this->cars = new ArrayCollection();
+
+        $this->setMoney(self::BASE_MONEY);
+        $this->setSmartness(self::BASE_SMARTNESS);
+        $this->setComposure(self::BASE_COMPOSURE);
+        $this->setReflex(self::BASE_REFLEX);
+        $this->setCourage(self::BASE_COURAGE);
+        $this->setXp(self::BASE_XP);
+    }
+
+    /**
+     * Get registrationDate
+     *
+     * @return \DateTime
+     */
+    public function getRegistrationDate()
+    {
+        return $this->registrationDate;
     }
 
     /**
