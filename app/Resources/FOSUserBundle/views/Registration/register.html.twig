@@ -1,5 +1,48 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends '::base.html.twig' %}
+{% trans_default_domain 'FOSUserBundle' %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Registration:register_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block body %}
+
+    <body class="login-img3-body">
+
+    <div class="container">
+
+        {% block fos %}
+            {{ parent() }}
+        {% endblock %}
+
+        <form class="login-form" action="{{ path('fos_user_registration_register') }}" method="post">
+
+            <div class="login-wrap">
+                <p class="login-img"><i class="icon_pencil_alt"></i></p>
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                {{ form_widget(form) }}
+                <button class="btn btn-primary btn-lg btn-block" type="submit" id="_submit"
+                        name="_submit">{{ 'registration.submit'|trans }}</button>
+                {{ form_end(form) }}
+                {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="icon_profile"></i></span>#}
+                    {#<input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}"#}
+                           {#placeholder="{{ 'security.login.username'|trans }}" autofocus>#}
+                {#</div>#}
+                {#<div class="input-group">#}
+                    {#<span class="input-group-addon"><i class="icon_key_alt"></i></span>#}
+                    {#<input type="password" class="form-control" id="password" name="_password"#}
+                           {#placeholder="{{ 'security.login.password'|trans }}">#}
+                {#</div>#}
+                {#<label class="checkbox">#}
+                    {#<input type="checkbox" id="remember_me" name="_remember_me"#}
+                           {#value="on"> {{ 'security.login.remember_me'|trans }}#}
+                    {#<span class="pull-right"> <a href="{{ path('fos_user_resetting_request') }}">{{ 'Forgot password'|trans }}?</a></span>#}
+                {#</label>#}
+                {#<a class="btn btn-info btn-lg btn-block" role="button" href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans }}</a>#}
+            </div>
+        </form>
+
+    </div>
+
+
+    </body>
+{% endblock %}
+
+
