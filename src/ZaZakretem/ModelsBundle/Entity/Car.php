@@ -23,6 +23,11 @@ class Car
     private $model;
 
     /**
+     * @ORM\Column(type="integer", length=6)
+     */
+    private $displacement;
+
+    /**
      * @ORM\Column(type="integer", length=4)
      */
     private $horsepower;
@@ -56,6 +61,11 @@ class Car
      * @ORM\Column(type="integer", length=10)
      */
     private $price;
+
+    /**
+     * @ORM\Column(type="integer", length=4)
+     */
+    private $modelYear;
 
     /**
      * @ORM\ManyToOne(targetEntity="Brand", inversedBy="cars")
@@ -108,6 +118,44 @@ class Car
     public function getModel()
     {
         return $this->model;
+    }
+
+    /**
+     * @param integer $displacement
+     *
+     * @return Car
+     */
+    public function setDisplacement($displacement)
+    {
+        $this->displacement = $displacement;
+
+        return $this;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getDisplacement()
+    {
+        return $this->displacement;
+    }
+
+    /**
+     * @param integer $modelYear
+     *
+     * @return Car
+     */
+    public function setModelYear($modelYear)
+    {
+        $this->modelYear = $modelYear;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getModelYear()
+    {
+        return $this->modelYear;
     }
 
     /**

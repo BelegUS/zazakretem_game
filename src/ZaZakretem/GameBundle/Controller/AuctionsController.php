@@ -21,9 +21,9 @@ class AuctionsController extends Controller
 
     public function viewCarsAction()
     {
-        $carsForSale = $this->getDoctrine()->getRepository('ZaZakretemModelsBundle:Car')
+        $cars = $this->getDoctrine()->getRepository('ZaZakretemModelsBundle:Car')->findAll();
         return $this->render('ZaZakretemGameBundle:Auctions:viewCars.html.twig', array(
-                // ...
+                'cars' => $cars,
             ));    }
 
 }

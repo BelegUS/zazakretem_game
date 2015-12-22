@@ -4,4 +4,9 @@
 
 {% block body %}
 <h1>Welcome to the Auctions:viewCars page</h1>
+    <table>
+    {% for car in cars %}
+        <tr>{{ car.brand.name }} {{ car.model }}</tr>
+    {% endfor %}
+    </table>
 {% endblock %}

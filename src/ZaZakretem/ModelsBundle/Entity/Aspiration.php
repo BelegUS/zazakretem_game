@@ -4,30 +4,10 @@ namespace ZaZakretem\ModelsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use ZaZakretem\ModelsBundle\Interfaces\SubTypeInterface;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="aspirations")
- */
-class Aspiration
+class Aspiration extends Layout
 {
-    /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $name;
-
-    /**
-     * @ORM\Column(type="text")
-     */
-    private $description;
-
     /**
      * @ORM\OneToMany(targetEntity="Car", mappedBy="aspiration")
      */
@@ -41,64 +21,6 @@ class Aspiration
     public function __construct() {
         $this->cars = new ArrayCollection();
         $this->parts = new ArrayCollection();
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Aspiration
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Aspiration
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
     }
 
     /**

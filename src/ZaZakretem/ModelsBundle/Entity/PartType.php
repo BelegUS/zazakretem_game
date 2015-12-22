@@ -29,6 +29,11 @@ class PartType
     private $description;
 
     /**
+     * @ORM\OneToMany(targetEntity="Layout", mappedBy="type")
+     */
+    protected $subTypes;
+
+    /**
      * @ORM\OneToMany(targetEntity="Part", mappedBy="type")
      */
     protected $parts;
