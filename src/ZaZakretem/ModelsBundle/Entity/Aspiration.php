@@ -6,6 +6,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use ZaZakretem\ModelsBundle\Interfaces\SubTypeInterface;
 
+/**
+ * @ORM\Entity
+ */
 class Aspiration extends Layout
 {
     /**
@@ -89,5 +92,39 @@ class Aspiration extends Layout
     public function getParts()
     {
         return $this->parts;
+    }
+
+    /**
+     * Add trackModificator
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator
+     *
+     * @return Aspiration
+     */
+    public function addTrackModificator(\ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator)
+    {
+        $this->trackModificators[] = $trackModificator;
+
+        return $this;
+    }
+
+    /**
+     * Remove trackModificator
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator
+     */
+    public function removeTrackModificator(\ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator)
+    {
+        $this->trackModificators->removeElement($trackModificator);
+    }
+
+    /**
+     * Get trackModificators
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTrackModificators()
+    {
+        return $this->trackModificators;
     }
 }

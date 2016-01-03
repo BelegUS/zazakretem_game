@@ -7,9 +7,11 @@ use ZaZakretem\ModelsBundle\Interfaces\SubTypeInterface;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="layouts")
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"aspiration" = "Aspiration", "drivetrain" = "Drivetrain"})
  */
-class Layout implements SubTypeInterface
+abstract class Layout implements SubTypeInterface
 {
     /**
      * @ORM\Column(type="integer")
@@ -29,10 +31,9 @@ class Layout implements SubTypeInterface
     protected $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PartType", inversedBy="subTypes")
-     * @ORM\JoinColumn(name="subType_id", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="TrackPartModificator", mappedBy="expectedLayout")
      */
-    protected $type;
+    protected $trackModificators;
 
 
 
@@ -95,4 +96,69 @@ class Layout implements SubTypeInterface
     }
 
 
+
+    /**
+     * Set type
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\PartType $type
+     *
+     * @return Layout
+     */
+    public function setType(\ZaZakretem\ModelsBundle\Entity\PartType $type = null)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\PartType
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->trackModificators = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add trackModificator
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator
+     *
+     * @return Layout
+     */
+    public function addTrackModificator(\ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator)
+    {
+        $this->trackModificators[] = $trackModificator;
+
+        return $this;
+    }
+
+    /**
+     * Remove trackModificator
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator
+     */
+    public function removeTrackModificator(\ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator)
+    {
+        $this->trackModificators->removeElement($trackModificator);
+    }
+
+    /**
+     * Get trackModificators
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTrackModificators()
+    {
+        return $this->trackModificators;
+    }
 }

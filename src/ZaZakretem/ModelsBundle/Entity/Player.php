@@ -291,4 +291,18 @@ class Player extends BaseUser
     {
         return $this->cars;
     }
+
+    /**
+     * Set registrationDate
+     *
+     * @param \DateTime $registrationDate
+     *
+     * @return Player
+     */
+    public function setRegistrationDate($registrationDate)
+    {
+        $this->registrationDate = $registrationDate;
+
+        return $this;
+    }
 }

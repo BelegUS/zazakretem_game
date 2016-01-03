@@ -1,14 +1,19 @@
 _index:
     path:     /dash
     defaults: { _controller: ZaZakretemGameBundle:Main:index }
+
+show_car:
+    path: /showCar/{carId}
+    defaults: { _controller: ZaZakretemGameBundle:Auctions:showCar }
+
 buy_car:
-    path:     /buyCar
+    path:     /buyCar/{carId}
     defaults: { _controller: ZaZakretemGameBundle:Auctions:buyCar }
 
 sell_car:
-    path:     /sellCar
+    path:     /sellCar/{carId}
     defaults: { _controller: ZaZakretemGameBundle:Auctions:sellCar }
 
-view_cars:
-    path:     /viewCars
-    defaults: { _controller: ZaZakretemGameBundle:Auctions:viewCars }
+view_auctions:
+    path:     /viewAuctions
+    defaults: { _controller: ZaZakretemGameBundle:Auctions:viewAuctions }

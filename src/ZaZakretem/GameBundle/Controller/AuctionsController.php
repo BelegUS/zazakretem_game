@@ -7,23 +7,32 @@ use ZaZakretem\ModelsBundle\Entity\Car;
 
 class AuctionsController extends Controller
 {
-    public function buyCarAction()
+    public function showCarAction($carId)
     {
-        return $this->render('ZaZakretemGameBundle:Auctions:buyCar.html.twig', array(
-                // ...
-            ));    }
+        $car = $this->getDoctrine()->getRepository('ZaZakretemModelsBundle:Car')->find($carId);
+        return $this->render('ZaZakretemGameBundle:Auctions:showCar.html.twig', array(
+            'car' => $car,
+        ));
+    }
 
-    public function sellCarAction()
+    public function buyCarAction($carId)
     {
-        return $this->render('ZaZakretemGameBundle:Auctions:sellCar.html.twig', array(
-                // ...
-            ));    }
+        return $this->render('ZaZakretemGameBundle:Auctions:buyCar.html.twig', array(// ...
+        ));
+    }
 
-    public function viewCarsAction()
+    public function sellCarAction($carId)
+    {
+        return $this->render('ZaZakretemGameBundle:Auctions:sellCar.html.twig', array(// ...
+        ));
+    }
+
+    public function viewAuctionsAction()
     {
         $cars = $this->getDoctrine()->getRepository('ZaZakretemModelsBundle:Car')->findAll();
-        return $this->render('ZaZakretemGameBundle:Auctions:viewCars.html.twig', array(
-                'cars' => $cars,
-            ));    }
+        return $this->render('ZaZakretemGameBundle:Auctions:viewAuctions.html.twig', array(
+            'cars' => $cars,
+        ));
+    }
 
 }

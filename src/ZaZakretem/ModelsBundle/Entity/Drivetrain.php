@@ -5,6 +5,9 @@ namespace ZaZakretem\ModelsBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+/**
+ * @ORM\Entity
+ */
 class Drivetrain extends Layout
 {
     /**
@@ -88,5 +91,39 @@ class Drivetrain extends Layout
     public function getParts()
     {
         return $this->parts;
+    }
+
+    /**
+     * Add trackModificator
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator
+     *
+     * @return Drivetrain
+     */
+    public function addTrackModificator(\ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator)
+    {
+        $this->trackModificators[] = $trackModificator;
+
+        return $this;
+    }
+
+    /**
+     * Remove trackModificator
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator
+     */
+    public function removeTrackModificator(\ZaZakretem\ModelsBundle\Entity\TrackPartModificator $trackModificator)
+    {
+        $this->trackModificators->removeElement($trackModificator);
+    }
+
+    /**
+     * Get trackModificators
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTrackModificators()
+    {
+        return $this->trackModificators;
     }
 }

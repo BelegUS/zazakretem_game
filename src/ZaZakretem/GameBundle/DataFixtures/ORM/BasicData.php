@@ -196,7 +196,13 @@ class BasicData implements FixtureInterface
         $serpentynyAspirationModificator = new TrackPartModificator();
         $serpentynyAspirationModificator->setModificator(2);
         $serpentynyAspirationModificator->setTrack($serpentynyDownhill);
-        $serpentynyAspirationModificator->setPartType($drivetrainPartType);
+        $serpentynyAspirationModificator->setPartType($aspirationPartType);
+        $serpentynyAspirationModificator->setExpectedLayout($turboAspiration);
+        $manager->persist($serpentynyAspirationModificator);
+
+
+
+        $manager->flush();
 
     }
 }

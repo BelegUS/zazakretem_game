@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class TrackPartModificator
 {
+    //TODO: Let's have column which tells value that is expected
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -33,6 +34,12 @@ class TrackPartModificator
      * @ORM\JoinColumn(name="track_id", referencedColumnName="id")
      */
     private $track;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Layout", inversedBy="trackModificators")
+     * @ORM\JoinColumn(name="expected_layout_id", referencedColumnName="id")
+     */
+    private $expectedLayout;
 
     /**
      * Get id
@@ -114,5 +121,29 @@ class TrackPartModificator
     public function getTrack()
     {
         return $this->track;
+    }
+
+    /**
+     * Set expectedLayout
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\Layout $expectedLayout
+     *
+     * @return TrackPartModificator
+     */
+    public function setExpectedLayout(\ZaZakretem\ModelsBundle\Entity\Layout $expectedLayout = null)
+    {
+        $this->expectedLayout = $expectedLayout;
+
+        return $this;
+    }
+
+    /**
+     * Get expectedLayout
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\Layout
+     */
+    public function getExpectedLayout()
+    {
+        return $this->expectedLayout;
     }
 }
