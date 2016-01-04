@@ -3,12 +3,13 @@
 namespace ZaZakretem\ModelsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ZaZakretem\ModelsBundle\Interfaces\CarInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="cars")
  */
-class Car
+class Car implements CarInterface
 {
     /**
      * @ORM\Column(type="integer")
@@ -396,5 +397,25 @@ class Car
     public function getAspiration()
     {
         return $this->aspiration;
+    }
+
+    public function getBrandName()
+    {
+        return $this->getBrand()->getName();
+    }
+
+    public function getModelName()
+    {
+        return $this->getModel();
+    }
+
+    public function getAspirationName()
+    {
+        return $this->getAspiration()->getName();
+    }
+
+    public function getDrivetrainName()
+    {
+        return $this->getDrivetrain()->getName();
     }
 }
