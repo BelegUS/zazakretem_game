@@ -6,6 +6,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ZaZakretem\ModelsBundle\Interfaces\HasPriceInterface;
 
 /**
  * @ORM\Entity
@@ -304,5 +305,20 @@ class Player extends BaseUser
         $this->registrationDate = $registrationDate;
 
         return $this;
+    }
+
+    /**
+     * Checks if Player can afford item
+     * @param HasPriceInterface $item
+     * @return bool
+     */
+    public function canAfford(HasPriceInterface $item)
+    {
+        $playerMoney = $this->getMoney();
+        $itemPrice = $item->getPrice();
+        if($playerMoney >= $itemPrice) {
+            return true;
+        }
+        return false;
     }
 }

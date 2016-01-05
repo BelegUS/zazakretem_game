@@ -2,7 +2,7 @@
 
 {% block main_content_wrapped %}
     <section class="panel">
-        <table class="table table-hover">
+        <table class="table">
             <thead>
             <tr>
                 <th></th>
@@ -10,58 +10,67 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>{{ 'Brand'|trans }}</td>
-                    <td>{{ car.brandName }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Model'|trans }}</td>
-                    <td>{{ car.modelName }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Model year'|trans }}</td>
-                    <td>{{ car.modelYear }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Drivetrain layout'|trans }}</td>
-                    <td>{{ car.drivetrainName }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Aspiration type'|trans }}</td>
-                    <td>{{ car.aspirationName }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Displacement'|trans }}</td>
-                    <td>{{ car.displacement }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Horsepower'|trans }}</td>
-                    <td>{{ car.horsepower }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Torque'|trans }}</td>
-                    <td>{{ car.torque }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Mass'|trans }}</td>
-                    <td>{{ car.mass }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Top speed'|trans }}</td>
-                    <td>{{ car.vmax }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Acceleration (0-100km/h)'|trans }}</td>
-                    <td>{{ car.acceleration }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Handling'|trans }}</td>
-                    <td>{{ car.handling }}</td>
-                </tr>
-                <tr>
-                    <td>{{ 'Price'|trans }}</td>
-                    <td>{{ car.price }}</td>
-                </tr>
+            <tr>
+                <td>{{ 'Brand'|trans }}</td>
+                <td>{{ car.brandName }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Model'|trans }}</td>
+                <td>{{ car.modelName }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Model year'|trans }}</td>
+                <td>{{ car.modelYear }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Drivetrain layout'|trans }}</td>
+                <td>{{ car.drivetrainName }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Aspiration type'|trans }}</td>
+                <td>{{ car.aspirationName }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Displacement'|trans }}</td>
+                <td>{{ car.displacement }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Horsepower'|trans }}</td>
+                <td>{{ car.horsepower }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Torque'|trans }}</td>
+                <td>{{ car.torque }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Mass'|trans }}</td>
+                <td>{{ car.mass }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Top speed'|trans }}</td>
+                <td>{{ car.vmax }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Acceleration (0-100km/h)'|trans }}</td>
+                <td>{{ car.acceleration }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Handling'|trans }}</td>
+                <td>{{ car.handling }}</td>
+            </tr>
+            <tr>
+                <td>{{ 'Price'|trans }}</td>
+                <td>{{ car.price }}</td>
+            </tr>
+            {% if app.user.canAfford(car) %}
+            <tr>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('buy_car', {'carId': car.id}) }}">
+                        <span class="icon_dolar"></span>
+                        {{ 'Buy car'|trans }}
+                    </a></td>
+            </tr>
+            {% endif %}
             </tbody>
         </table>
     </section>

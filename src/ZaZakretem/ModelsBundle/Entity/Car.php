@@ -4,12 +4,13 @@ namespace ZaZakretem\ModelsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ZaZakretem\ModelsBundle\Interfaces\CarInterface;
+use ZaZakretem\ModelsBundle\Interfaces\HasPriceInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="cars")
  */
-class Car implements CarInterface
+class Car implements CarInterface, HasPriceInterface
 {
     /**
      * @ORM\Column(type="integer")
