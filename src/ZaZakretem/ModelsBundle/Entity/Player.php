@@ -6,6 +6,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ZaZakretem\GameBundle\Exceptions\NotEnoughMoneyException;
 use ZaZakretem\ModelsBundle\Interfaces\HasPriceInterface;
 
 /**
@@ -320,5 +321,26 @@ class Player extends BaseUser
             return true;
         }
         return false;
+    }
+
+    public function buyCar(Car $car)
+    {
+        $this->spendMoney($car->getPrice());
+        $this->addNewCar($car);
+    }
+
+    public function addNewCar(Car $car)
+    {
+        //TODO: This should be in a service, I suppose
+    }
+
+    public function spendMoney($price)
+    {
+        $currentMoneyValue = $this->getMoney();
+        if($price > $currentMoneyValue) {
+            throw new NotEnoughMoneyException;
+        }
+        $newMoneyValue = $currentMoneyValue - $price;
+        $this->setMoney($newMoneyValue);
     }
 }

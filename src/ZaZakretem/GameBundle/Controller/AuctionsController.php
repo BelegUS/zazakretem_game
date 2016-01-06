@@ -2,10 +2,11 @@
 
 namespace ZaZakretem\GameBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use ZaZakretem\GameBundle\Controller\helpers\BaseController;
 use ZaZakretem\ModelsBundle\Entity\Car;
 
-class AuctionsController extends Controller
+class AuctionsController extends BaseController
 {
     public function showCarAction($carId)
     {
@@ -17,6 +18,15 @@ class AuctionsController extends Controller
 
     public function buyCarAction($carId)
     {
+        $player = $this->getUser();
+        $car = $this->getDoctrine()->getRepository('ZaZakretemModelsBundle:Car')->find($carId);
+
+        if(empty($car)) {
+            throw new NotFoundHttpException;
+        }
+
+        $player->buyCar($car);
+
         return $this->render('ZaZakretemGameBundle:Auctions:buyCar.html.twig', array(// ...
         ));
     }
