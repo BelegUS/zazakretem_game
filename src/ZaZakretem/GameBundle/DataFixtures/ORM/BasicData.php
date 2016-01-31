@@ -14,6 +14,7 @@ use ZaZakretem\ModelsBundle\Entity\Aspiration;
 use ZaZakretem\ModelsBundle\Entity\Brand;
 use ZaZakretem\ModelsBundle\Entity\Car;
 use ZaZakretem\ModelsBundle\Entity\Drivetrain;
+use ZaZakretem\ModelsBundle\Entity\Part;
 use ZaZakretem\ModelsBundle\Entity\PartType;
 use ZaZakretem\ModelsBundle\Entity\Player;
 use ZaZakretem\ModelsBundle\Entity\Track;
@@ -95,30 +96,118 @@ class BasicData implements FixtureInterface
         $brakesPartType->setDescription('Strong and fade-proof brakes are important when going downhill. They improve handling');
         $manager->persist($brakesPartType);
 
+        $stockBrakesPart = new Part();
+        $stockBrakesPart->setName('Stock brakes');
+        $stockBrakesPart->setDescription('Stock brakes');
+        $stockBrakesPart->setType($brakesPartType);
+        $manager->persist($stockBrakesPart);
+
+
         $suspensionPartType = new PartType();
         $suspensionPartType->setName('Suspension');
         $suspensionPartType->setDescription('Stiff and well-tuned suspension is especially important on twisty roads.');
         $manager->persist($suspensionPartType);
+
+        $stockSuspensionPart = new Part();
+        $stockSuspensionPart->setName('Stock suspension');
+        $stockSuspensionPart->setDescription('Stock suspension');
+        $stockSuspensionPart->setType($suspensionPartType);
+        $manager->persist($stockSuspensionPart);
 
         $aspirationPartType = new PartType();
         $aspirationPartType->setName('Aspiration');
         $aspirationPartType->setDescription('Car\'s aspiration describes how engine gets it\'s air to produce power. Naturally aspirated engines have steady line of power and torque on all RPM\'s. However, boosted engines provide much higher power outputs at various RPM\'s (depending on type of used boost provider), but at the cost of power loss on lower/higher RPM\'s');
         $manager->persist($aspirationPartType);
 
+        $stockNaAspirationPart = new Part();
+        $stockNaAspirationPart->setName('Stock NA');
+        $stockNaAspirationPart->setDescription('Stock NA aspiration');
+        $stockNaAspirationPart->setType($aspirationPartType);
+        $stockNaAspirationPart->setLayout($naAspiration);
+        $manager->persist($stockNaAspirationPart);
+
+        $stockTurboAspirationPart = new Part();
+        $stockTurboAspirationPart->setName('Stock Turbo');
+        $stockTurboAspirationPart->setDescription('Stock Turbo aspiration');
+        $stockTurboAspirationPart->setType($aspirationPartType);
+        $stockTurboAspirationPart->setLayout($turboAspiration);
+        $manager->persist($stockTurboAspirationPart);
+
+        $stockTwinTurboAspirationPart = new Part();
+        $stockTwinTurboAspirationPart->setName('Stock TwinTurbo');
+        $stockTwinTurboAspirationPart->setDescription('Stock TwinTurbo aspiration');
+        $stockTwinTurboAspirationPart->setType($aspirationPartType);
+        $stockTwinTurboAspirationPart->setLayout($twinTurboAspiration);
+        $manager->persist($stockTwinTurboAspirationPart);
+
+        $stockSuperchargerAspirationPart = new Part();
+        $stockSuperchargerAspirationPart->setName('Stock Supercharger');
+        $stockSuperchargerAspirationPart->setDescription('Stock Supercharger aspiration');
+        $stockSuperchargerAspirationPart->setType($aspirationPartType);
+        $stockSuperchargerAspirationPart->setLayout($superchargerAspiration);
+        $manager->persist($stockSuperchargerAspirationPart);
+
         $drivetrainPartType = new PartType();
         $drivetrainPartType->setName('Drivetrain');
         $drivetrainPartType->setDescription('Car\'s drivetrain layout determines how the car handles, and which driving technique(s) suit best with it. As FF and AWD cars tend to be better with grip, FR is best match for drift. Both MR and RR layouts fit in between those techniques.');
         $manager->persist($drivetrainPartType);
+
+        $ffDrivetrainPart = new Part();
+        $ffDrivetrainPart->setName('FF');
+        $ffDrivetrainPart->setDescription('FF drivetrain');
+        $ffDrivetrainPart->setType($drivetrainPartType);
+        $ffDrivetrainPart->setLayout($ffDrivetrain);
+        $manager->persist($ffDrivetrainPart);
+
+        $frDrivetrainPart = new Part();
+        $frDrivetrainPart->setName('FR');
+        $frDrivetrainPart->setDescription('FR drivetrain');
+        $frDrivetrainPart->setType($drivetrainPartType);
+        $frDrivetrainPart->setLayout($frDrivetrain);
+        $manager->persist($frDrivetrainPart);
+
+        $awdDrivetrainPart = new Part();
+        $awdDrivetrainPart->setName('AWD');
+        $awdDrivetrainPart->setDescription('AWD drivetrain');
+        $awdDrivetrainPart->setType($drivetrainPartType);
+        $awdDrivetrainPart->setLayout($awdDrivetrain);
+        $manager->persist($awdDrivetrainPart);
+
+        $mrDrivetrainPart = new Part();
+        $mrDrivetrainPart->setName('MR');
+        $mrDrivetrainPart->setDescription('MR drivetrain');
+        $mrDrivetrainPart->setType($drivetrainPartType);
+        $mrDrivetrainPart->setLayout($mrDrivetrain);
+        $manager->persist($mrDrivetrainPart);
+
+        $rrDrivetrainPart = new Part();
+        $rrDrivetrainPart->setName('RR');
+        $rrDrivetrainPart->setDescription('RR drivetrain');
+        $rrDrivetrainPart->setType($drivetrainPartType);
+        $rrDrivetrainPart->setLayout($rrDrivetrain);
+        $manager->persist($rrDrivetrainPart);
 
         $engineTunePartType = new PartType();
         $engineTunePartType->setName('Engine tune');
         $engineTunePartType->setDescription('Engine tune allows getting higher power outputs. Using aftermarket or custom-made parts like exhaust, intake or pistons makes overall engine specification better. Acceleration, top speed and torque all benefit from engine tune.');
         $manager->persist($engineTunePartType);
 
+        $stockEngineTunePart = new Part();
+        $stockEngineTunePart->setName('Stock engine tune');
+        $stockEngineTunePart->setDescription('Stock engine tune');
+        $stockEngineTunePart->setType($engineTunePartType);
+        $manager->persist($stockEngineTunePart);
+
         $massReductionPartType = new PartType();
         $massReductionPartType->setName('Mass reduction');
         $massReductionPartType->setDescription('Mass reduction is all about lowering the car\'s weight. As Colin Chapman once said, powerful cars are fast at straights, but light cars are fast everywhere. Reducing mass increases acceleration, improves handling and reduces tyre wear and brake fading, especially on downhill, twisty courses');
         $manager->persist($massReductionPartType);
+
+        $stockMassReductionPart = new Part();
+        $stockMassReductionPart->setName('No mass reduction');
+        $stockMassReductionPart->setDescription('No mass reduction');
+        $stockMassReductionPart->setType($massReductionPartType);
+        $manager->persist($stockMassReductionPart);
 
         $sierraCar = new Car();
         $sierraCar->setAcceleration(9.1);

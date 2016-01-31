@@ -35,6 +35,11 @@ abstract class Layout implements SubTypeInterface
      */
     protected $trackModificators;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Part", mappedBy="layout")
+     */
+    protected $parts;
+
 
 
     /**

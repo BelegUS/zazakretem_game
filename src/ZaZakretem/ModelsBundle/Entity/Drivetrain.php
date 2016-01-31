@@ -18,11 +18,12 @@ class Drivetrain extends Layout
     /**
      * @ORM\OneToMany(targetEntity="DrivetrainPart", mappedBy="drivetrain")
      */
-    private $parts;
+    protected $parts;
 
     public function __construct() {
         $this->cars = new ArrayCollection();
         $this->parts = new ArrayCollection();
+        parent::__construct();
     }
 
     /**

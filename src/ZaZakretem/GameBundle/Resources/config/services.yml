@@ -2,3 +2,15 @@ services:
 #    za_zakretem_game.example:
 #        class: ZaZakretem\GameBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    part_provider:
+        class: ZaZakretem\GameBundle\Services\PartProvider
+        arguments: [ @doctrine.orm.entity_manager ]
+
+    car_provider:
+        class: ZaZakretem\GameBundle\Services\CarProvider
+        arguments: [ @doctrine.orm.entity_manager, @part_provider ]
+
+    buyer:
+        class: ZaZakretem\GameBundle\Services\Buyer
+        arguments: [ @doctrine.orm.entity_manager, @car_provider ]

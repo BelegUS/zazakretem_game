@@ -323,17 +323,6 @@ class Player extends BaseUser
         return false;
     }
 
-    public function buyCar(Car $car)
-    {
-        $this->spendMoney($car->getPrice());
-        $this->addNewCar($car);
-    }
-
-    public function addNewCar(Car $car)
-    {
-        //TODO: This should be in a service, I suppose
-    }
-
     public function spendMoney($price)
     {
         $currentMoneyValue = $this->getMoney();

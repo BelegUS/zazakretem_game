@@ -26,42 +26,42 @@ class Part
     /**
      * @ORM\Column(type="integer", length=3)
      */
-    private $horsepower_change;
+    private $horsepower_change = 0;
 
     /**
      * @ORM\Column(type="integer", length=3)
      */
-    private $torque_change;
+    private $torque_change = 0;
 
     /**
      * @ORM\Column(type="integer", length=3)
      */
-    private $mass_change;
+    private $mass_change = 0;
 
     /**
      * @ORM\Column(type="integer", length=3)
      */
-    private $vmax_change;
+    private $vmax_change = 0;
 
     /**
      * @ORM\Column(type="integer", length=3)
      */
-    private $acceleration_change;
+    private $acceleration_change = 0;
 
     /**
      * @ORM\Column(type="integer", length=3)
      */
-    private $handling_change;
+    private $handling_change = 0;
 
     /**
      * @ORM\Column(type="integer", length=2)
      */
-    private $level;
+    private $level = 0;
 
     /**
      * @ORM\Column(type="integer", length=10)
      */
-    private $price;
+    private $price = 0;
 
     /**
      * @ORM\Column(type="text")
@@ -73,6 +73,12 @@ class Part
      * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
      */
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Layout", inversedBy="parts")
+     * @ORM\JoinColumn(name="layout_id", referencedColumnName="id")
+     */
+    private $layout;
 
     /**
      * Get id
@@ -347,4 +353,22 @@ class Part
     {
         return $this->type;
     }
+
+    /**
+     * @param \ZaZakretem\ModelsBundle\Entity\Layout $layout
+     */
+    public function setLayout(\ZaZakretem\ModelsBundle\Entity\Layout $layout)
+    {
+        $this->layout = $layout;
+    }
+
+    /**
+     * @return \ZaZakretem\ModelsBundle\Entity\Layout $layout
+     */
+    public function getLayout()
+    {
+        return $this->layout;
+    }
+
+
 }

@@ -19,11 +19,12 @@ class Aspiration extends Layout
     /**
      * @ORM\OneToMany(targetEntity="AspirationPart", mappedBy="aspiration")
      */
-    private $parts;
+    protected $parts;
 
     public function __construct() {
         $this->cars = new ArrayCollection();
         $this->parts = new ArrayCollection();
+        parent::__construct();
     }
 
     /**

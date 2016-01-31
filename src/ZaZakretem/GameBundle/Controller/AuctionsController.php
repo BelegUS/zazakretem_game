@@ -25,10 +25,11 @@ class AuctionsController extends BaseController
             throw new NotFoundHttpException;
         }
 
-        $player->buyCar($car);
+        $carBuyer = $this->container->get('buyer');
 
-        return $this->render('ZaZakretemGameBundle:Auctions:buyCar.html.twig', array(// ...
-        ));
+        $carBuyer->buyNewCar($player, $car);
+
+        return $this->render('ZaZakretemGameBundle:Auctions:viewAuctions.html.twig');
     }
 
     public function sellCarAction($carId)
