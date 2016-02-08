@@ -9,7 +9,7 @@
 namespace ZaZakretem\ModelsBundle\Enums;
 
 
-class PartLevel
+class PartLevels
 {
     const STOCK = 0;
     const STREET = 1;

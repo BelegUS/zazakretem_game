@@ -75,12 +75,6 @@ class Part
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Layout", inversedBy="parts")
-     * @ORM\JoinColumn(name="layout_id", referencedColumnName="id")
-     */
-    private $layout;
-
-    /**
      * Get id
      *
      * @return integer
@@ -353,22 +347,5 @@ class Part
     {
         return $this->type;
     }
-
-    /**
-     * @param \ZaZakretem\ModelsBundle\Entity\Layout $layout
-     */
-    public function setLayout(\ZaZakretem\ModelsBundle\Entity\Layout $layout)
-    {
-        $this->layout = $layout;
-    }
-
-    /**
-     * @return \ZaZakretem\ModelsBundle\Entity\Layout $layout
-     */
-    public function getLayout()
-    {
-        return $this->layout;
-    }
-
 
 }

@@ -9,7 +9,7 @@
 namespace ZaZakretem\ModelsBundle\Enums;
 
 
-class PartTypeName
+class PartTypeNames
 {
     const BRAKES = 'Brakes';
     const SUSPENSION = 'Suspension';

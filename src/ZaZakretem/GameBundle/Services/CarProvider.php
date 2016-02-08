@@ -6,8 +6,8 @@ namespace ZaZakretem\GameBundle\Services;
 use Doctrine\ORM\EntityManager;
 use ZaZakretem\ModelsBundle\Entity\Car;
 use ZaZakretem\ModelsBundle\Entity\PlayerCar;
-use ZaZakretem\ModelsBundle\Enums\PartLevel;
-use ZaZakretem\ModelsBundle\Enums\PartTypeName;
+use ZaZakretem\ModelsBundle\Enums\PartLevels;
+use ZaZakretem\ModelsBundle\Enums\PartTypeNames;
 
 class CarProvider
 {
@@ -30,12 +30,12 @@ class CarProvider
 
         $stockCar = new PlayerCar();
         $stockCar->setCar($car);
-        $stockCar->setAspiration($partProvider->getPart(PartTypeName::ASPIRATION, PartLevel::STOCK));
-        $stockCar->setBrakes($partProvider->getPart(PartTypeName::BRAKES, PartLevel::STOCK));
-        $stockCar->setDrivetrain($partProvider->getPart(PartTypeName::DRIVETRAIN, PartLevel::STOCK));
-        $stockCar->setEngineTune($partProvider->getPart(PartTypeName::ENGINE_TUNE, PartLevel::STOCK));
-        $stockCar->setMassReduction($partProvider->getPart(PartTypeName::MASS_REDUCTION, PartLevel::STOCK));
-        $stockCar->setSuspension($partProvider->getPart(PartTypeName::SUSPENSION, PartLevel::STOCK));
+        $stockCar->setAspirationPart($partProvider->getPart(PartTypeNames::ASPIRATION, PartLevels::STOCK));
+        $stockCar->setBrakes($partProvider->getPart(PartTypeNames::BRAKES, PartLevels::STOCK));
+        $stockCar->setDrivetrainPart($partProvider->getPart(PartTypeNames::DRIVETRAIN, PartLevels::STOCK));
+        $stockCar->setEngineTune($partProvider->getPart(PartTypeNames::ENGINE_TUNE, PartLevels::STOCK));
+        $stockCar->setMassReduction($partProvider->getPart(PartTypeNames::MASS_REDUCTION, PartLevels::STOCK));
+        $stockCar->setSuspension($partProvider->getPart(PartTypeNames::SUSPENSION, PartLevels::STOCK));
 
         return $stockCar;
     }

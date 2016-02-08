@@ -52,13 +52,13 @@ class PlayerCar
      * @ORM\ManyToOne(targetEntity="DrivetrainPart")
      * @ORM\JoinColumn(name="drivetrain_part_id", referencedColumnName="drivetrain_id")
      */
-    private $drivetrain;
+    private $drivetrain_part;
 
     /**
      * @ORM\ManyToOne(targetEntity="AspirationPart")
      * @ORM\JoinColumn(name="aspiration_part_id", referencedColumnName="aspiration_id")
      */
-    private $aspiration;
+    private $aspiration_part;
 
     /**
      * Set car
@@ -207,13 +207,13 @@ class PlayerCar
     /**
      * Set drivetrain
      *
-     * @param \ZaZakretem\ModelsBundle\Entity\DrivetrainPart $drivetrain
+     * @param \ZaZakretem\ModelsBundle\Entity\DrivetrainPart $drivetrain_part
      *
      * @return PlayerCar
      */
-    public function setDrivetrain(\ZaZakretem\ModelsBundle\Entity\DrivetrainPart $drivetrain = null)
+    public function setDrivetrainPart(\ZaZakretem\ModelsBundle\Entity\DrivetrainPart $drivetrain_part = null)
     {
-        $this->drivetrain = $drivetrain;
+        $this->drivetrain_part = $drivetrain_part;
 
         return $this;
     }
@@ -223,21 +223,21 @@ class PlayerCar
      *
      * @return \ZaZakretem\ModelsBundle\Entity\DrivetrainPart
      */
-    public function getDrivetrain()
+    public function getDrivetrainPart()
     {
-        return $this->drivetrain;
+        return $this->drivetrain_part;
     }
 
     /**
      * Set aspiration
      *
-     * @param \ZaZakretem\ModelsBundle\Entity\AspirationPart $aspiration
+     * @param \ZaZakretem\ModelsBundle\Entity\AspirationPart $aspiration_part
      *
      * @return PlayerCar
      */
-    public function setAspiration(\ZaZakretem\ModelsBundle\Entity\AspirationPart $aspiration = null)
+    public function setAspirationPart(\ZaZakretem\ModelsBundle\Entity\AspirationPart $aspiration_part = null)
     {
-        $this->aspiration = $aspiration;
+        $this->aspiration_part = $aspiration_part;
 
         return $this;
     }
@@ -247,8 +247,24 @@ class PlayerCar
      *
      * @return \ZaZakretem\ModelsBundle\Entity\AspirationPart
      */
+    public function getAspirationPart()
+    {
+        return $this->aspiration_part;
+    }
+
+    /**
+     * @return Drivetrain
+     */
+    public function getDrivetrain()
+    {
+        return $this->getDrivetrainPart()->getDrivetrain();
+    }
+
+    /**
+     * @return Aspiration
+     */
     public function getAspiration()
     {
-        return $this->aspiration;
+        return $this->getAspirationPart()->getAspiration();
     }
 }

@@ -11,9 +11,11 @@ namespace ZaZakretem\GameBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use ZaZakretem\ModelsBundle\Entity\Aspiration;
+use ZaZakretem\ModelsBundle\Entity\AspirationPart;
 use ZaZakretem\ModelsBundle\Entity\Brand;
 use ZaZakretem\ModelsBundle\Entity\Car;
 use ZaZakretem\ModelsBundle\Entity\Drivetrain;
+use ZaZakretem\ModelsBundle\Entity\DrivetrainPart;
 use ZaZakretem\ModelsBundle\Entity\Part;
 use ZaZakretem\ModelsBundle\Entity\PartType;
 use ZaZakretem\ModelsBundle\Entity\Player;
@@ -119,32 +121,48 @@ class BasicData implements FixtureInterface
         $aspirationPartType->setDescription('Car\'s aspiration describes how engine gets it\'s air to produce power. Naturally aspirated engines have steady line of power and torque on all RPM\'s. However, boosted engines provide much higher power outputs at various RPM\'s (depending on type of used boost provider), but at the cost of power loss on lower/higher RPM\'s');
         $manager->persist($aspirationPartType);
 
-        $stockNaAspirationPart = new Part();
-        $stockNaAspirationPart->setName('Stock NA');
-        $stockNaAspirationPart->setDescription('Stock NA aspiration');
-        $stockNaAspirationPart->setType($aspirationPartType);
-        $stockNaAspirationPart->setLayout($naAspiration);
+        $stockNaPart = new Part();
+        $stockNaPart->setName('Stock NA');
+        $stockNaPart->setDescription('Stock NA aspiration');
+        $stockNaPart->setType($aspirationPartType);
+        $manager->persist($stockNaPart);
+        
+        $stockNaAspirationPart = new AspirationPart();
+        $stockNaAspirationPart->setAspiration($naAspiration);
+        $stockNaAspirationPart->setPart($stockNaPart);
         $manager->persist($stockNaAspirationPart);
 
-        $stockTurboAspirationPart = new Part();
-        $stockTurboAspirationPart->setName('Stock Turbo');
-        $stockTurboAspirationPart->setDescription('Stock Turbo aspiration');
-        $stockTurboAspirationPart->setType($aspirationPartType);
-        $stockTurboAspirationPart->setLayout($turboAspiration);
+        $stockTurboPart = new Part();
+        $stockTurboPart->setName('Stock Turbo');
+        $stockTurboPart->setDescription('Stock Turbo aspiration');
+        $stockTurboPart->setType($aspirationPartType);
+        $manager->persist($stockTurboPart);
+
+        $stockTurboAspirationPart = new AspirationPart();
+        $stockTurboAspirationPart->setAspiration($turboAspiration);
+        $stockTurboAspirationPart->setPart($stockTurboPart);
         $manager->persist($stockTurboAspirationPart);
 
-        $stockTwinTurboAspirationPart = new Part();
-        $stockTwinTurboAspirationPart->setName('Stock TwinTurbo');
-        $stockTwinTurboAspirationPart->setDescription('Stock TwinTurbo aspiration');
-        $stockTwinTurboAspirationPart->setType($aspirationPartType);
-        $stockTwinTurboAspirationPart->setLayout($twinTurboAspiration);
+        $stockTwinTurboPart = new Part();
+        $stockTwinTurboPart->setName('Stock TwinTurbo');
+        $stockTwinTurboPart->setDescription('Stock TwinTurbo aspiration');
+        $stockTwinTurboPart->setType($aspirationPartType);
+        $manager->persist($stockTwinTurboPart);
+
+        $stockTwinTurboAspirationPart = new AspirationPart();
+        $stockTwinTurboAspirationPart->setAspiration($twinTurboAspiration);
+        $stockTwinTurboAspirationPart->setPart($stockTwinTurboPart);
         $manager->persist($stockTwinTurboAspirationPart);
 
-        $stockSuperchargerAspirationPart = new Part();
-        $stockSuperchargerAspirationPart->setName('Stock Supercharger');
-        $stockSuperchargerAspirationPart->setDescription('Stock Supercharger aspiration');
-        $stockSuperchargerAspirationPart->setType($aspirationPartType);
-        $stockSuperchargerAspirationPart->setLayout($superchargerAspiration);
+        $stockSuperchargerPart = new Part();
+        $stockSuperchargerPart->setName('Stock Supercharger');
+        $stockSuperchargerPart->setDescription('Stock Supercharger aspiration');
+        $stockSuperchargerPart->setType($aspirationPartType);
+        $manager->persist($stockSuperchargerPart);
+
+        $stockSuperchargerAspirationPart = new AspirationPart();
+        $stockSuperchargerAspirationPart->setAspiration($superchargerAspiration);
+        $stockSuperchargerAspirationPart->setPart($stockSuperchargerPart);
         $manager->persist($stockSuperchargerAspirationPart);
 
         $drivetrainPartType = new PartType();
@@ -152,39 +170,59 @@ class BasicData implements FixtureInterface
         $drivetrainPartType->setDescription('Car\'s drivetrain layout determines how the car handles, and which driving technique(s) suit best with it. As FF and AWD cars tend to be better with grip, FR is best match for drift. Both MR and RR layouts fit in between those techniques.');
         $manager->persist($drivetrainPartType);
 
-        $ffDrivetrainPart = new Part();
-        $ffDrivetrainPart->setName('FF');
-        $ffDrivetrainPart->setDescription('FF drivetrain');
-        $ffDrivetrainPart->setType($drivetrainPartType);
-        $ffDrivetrainPart->setLayout($ffDrivetrain);
+        $ffPart = new Part();
+        $ffPart->setName('FF');
+        $ffPart->setDescription('FF drivetrain');
+        $ffPart->setType($drivetrainPartType);
+        $manager->persist($ffPart);
+
+        $ffDrivetrainPart = new DrivetrainPart();
+        $ffDrivetrainPart->setPart($ffPart);
+        $ffDrivetrainPart->setDrivetrain($ffDrivetrain);
         $manager->persist($ffDrivetrainPart);
 
-        $frDrivetrainPart = new Part();
-        $frDrivetrainPart->setName('FR');
-        $frDrivetrainPart->setDescription('FR drivetrain');
-        $frDrivetrainPart->setType($drivetrainPartType);
-        $frDrivetrainPart->setLayout($frDrivetrain);
+        $frPart = new Part();
+        $frPart->setName('FR');
+        $frPart->setDescription('FR drivetrain');
+        $frPart->setType($drivetrainPartType);
+        $manager->persist($frPart);
+
+        $frDrivetrainPart = new DrivetrainPart();
+        $frDrivetrainPart->setDrivetrain($frDrivetrain);
+        $frDrivetrainPart->setPart($frPart);
         $manager->persist($frDrivetrainPart);
 
-        $awdDrivetrainPart = new Part();
-        $awdDrivetrainPart->setName('AWD');
-        $awdDrivetrainPart->setDescription('AWD drivetrain');
-        $awdDrivetrainPart->setType($drivetrainPartType);
-        $awdDrivetrainPart->setLayout($awdDrivetrain);
+        $awdPart = new Part();
+        $awdPart->setName('AWD');
+        $awdPart->setDescription('AWD drivetrain');
+        $awdPart->setType($drivetrainPartType);
+        $manager->persist($awdPart);
+
+        $awdDrivetrainPart = new DrivetrainPart();
+        $awdDrivetrainPart->setDrivetrain($awdDrivetrain);
+        $awdDrivetrainPart->setPart($awdPart);
         $manager->persist($awdDrivetrainPart);
 
-        $mrDrivetrainPart = new Part();
-        $mrDrivetrainPart->setName('MR');
-        $mrDrivetrainPart->setDescription('MR drivetrain');
-        $mrDrivetrainPart->setType($drivetrainPartType);
-        $mrDrivetrainPart->setLayout($mrDrivetrain);
+        $mrPart = new Part();
+        $mrPart->setName('MR');
+        $mrPart->setDescription('MR drivetrain');
+        $mrPart->setType($drivetrainPartType);
+        $manager->persist($mrPart);
+
+        $mrDrivetrainPart = new DrivetrainPart();
+        $mrDrivetrainPart->setDrivetrain($mrDrivetrain);
+        $mrDrivetrainPart->setPart($mrPart);
         $manager->persist($mrDrivetrainPart);
 
-        $rrDrivetrainPart = new Part();
-        $rrDrivetrainPart->setName('RR');
-        $rrDrivetrainPart->setDescription('RR drivetrain');
-        $rrDrivetrainPart->setType($drivetrainPartType);
-        $rrDrivetrainPart->setLayout($rrDrivetrain);
+        $rrPart = new Part();
+        $rrPart->setName('RR');
+        $rrPart->setDescription('RR drivetrain');
+        $rrPart->setType($drivetrainPartType);
+        $manager->persist($rrPart);
+
+        $rrDrivetrainPart = new DrivetrainPart();
+        $rrDrivetrainPart->setPart($rrPart);
+        $rrDrivetrainPart->setDrivetrain($rrDrivetrain);
         $manager->persist($rrDrivetrainPart);
 
         $engineTunePartType = new PartType();
