@@ -29,7 +29,7 @@ class AuctionsController extends BaseController
 
         $carBuyer->buyNewCar($player, $car);
 
-        return $this->viewAuctionsAction();
+        return $this->redirectToRoute('view_auctions');
     }
 
     public function sellCarAction($carId)

@@ -17,3 +17,7 @@ sell_car:
 view_auctions:
     path:     /viewAuctions
     defaults: { _controller: ZaZakretemGameBundle:Auctions:viewAuctions }
+
+view_garage:
+    path: /viewGarage
+    defaults: { _controller: ZaZakretemGameBundle:Garage:showGarage }

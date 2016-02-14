@@ -11,14 +11,19 @@ use Doctrine\ORM\Mapping as ORM;
 class AspirationPart
 {
     /**
+     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @ORM\OneToOne(targetEntity="Part")
      * @ORM\JoinColumn(name="part_id", referencedColumnName="id")
      */
     private $part;
 
     /**
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Aspiration", inversedBy="parts")
      * @ORM\JoinColumn(name="aspiration_id", referencedColumnName="id")
      */
@@ -73,4 +78,22 @@ class AspirationPart
     {
         return $this->aspiration;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 }

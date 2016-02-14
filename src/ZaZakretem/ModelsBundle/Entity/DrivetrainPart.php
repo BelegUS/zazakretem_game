@@ -11,14 +11,19 @@ use Doctrine\ORM\Mapping as ORM;
 class DrivetrainPart
 {
     /**
+     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @ORM\OneToOne(targetEntity="Part")
      * @ORM\JoinColumn(name="part_id", referencedColumnName="id")
      */
     private $part;
 
     /**
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Drivetrain", inversedBy="parts")
      * @ORM\JoinColumn(name="drivetrain_id", referencedColumnName="id")
      */
@@ -72,4 +77,22 @@ class DrivetrainPart
     {
         return $this->drivetrain;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 }

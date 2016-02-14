@@ -55,13 +55,13 @@ class PlayerCar
 
     /**
      * @ORM\ManyToOne(targetEntity="DrivetrainPart")
-     * @ORM\JoinColumn(name="drivetrain_part_id", referencedColumnName="drivetrain_id")
+     * @ORM\JoinColumn(name="drivetrain_part_id", referencedColumnName="id")
      */
     private $drivetrain_part;
 
     /**
      * @ORM\ManyToOne(targetEntity="AspirationPart")
-     * @ORM\JoinColumn(name="aspiration_part_id", referencedColumnName="aspiration_id")
+     * @ORM\JoinColumn(name="aspiration_part_id", referencedColumnName="id")
      */
     private $aspiration_part;
 

@@ -35,6 +35,8 @@ class Builder implements ContainerAwareInterface
 
         // create another menu item
         $menu->addChild('Auctions', array('route' => 'view_auctions'));
+
+        $menu->addChild('Garage', array('route' => 'view_garage'));
         // you can also add sub level's to your menu's as follows
 //        $menu['About Me']->addChild('Edit profile', array('route' => 'edit_profile'));
 
