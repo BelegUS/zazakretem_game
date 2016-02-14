@@ -29,7 +29,7 @@ class AuctionsController extends BaseController
 
         $carBuyer->buyNewCar($player, $car);
 
-        return $this->render('ZaZakretemGameBundle:Auctions:viewAuctions.html.twig');
+        return $this->viewAuctionsAction();
     }
 
     public function sellCarAction($carId)

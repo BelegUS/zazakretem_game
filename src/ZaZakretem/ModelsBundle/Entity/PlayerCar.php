@@ -11,14 +11,19 @@ use Doctrine\ORM\Mapping as ORM;
 class PlayerCar
 {
     /**
+     * @ORM\Column(type="integer")
      * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Car")
      * @ORM\JoinColumn(name="car_id", referencedColumnName="id")
      */
     private $car;
 
     /**
-     * @ORM\Id
      * @ORM\ManyToOne(targetEntity="Player", inversedBy="cars")
      * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      */
@@ -59,6 +64,24 @@ class PlayerCar
      * @ORM\JoinColumn(name="aspiration_part_id", referencedColumnName="aspiration_id")
      */
     private $aspiration_part;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 
     /**
      * Set car
@@ -229,6 +252,14 @@ class PlayerCar
     }
 
     /**
+     * @return Drivetrain
+     */
+    public function getDrivetrain()
+    {
+        return $this->getDrivetrainPart()->getDrivetrain();
+    }
+
+    /**
      * Set aspiration
      *
      * @param \ZaZakretem\ModelsBundle\Entity\AspirationPart $aspiration_part
@@ -250,14 +281,6 @@ class PlayerCar
     public function getAspirationPart()
     {
         return $this->aspiration_part;
-    }
-
-    /**
-     * @return Drivetrain
-     */
-    public function getDrivetrain()
-    {
-        return $this->getDrivetrainPart()->getDrivetrain();
     }
 
     /**
