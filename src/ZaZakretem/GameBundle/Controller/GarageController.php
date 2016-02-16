@@ -13,14 +13,26 @@ use ZaZakretem\GameBundle\Controller\helpers\BaseController;
 
 class GarageController extends BaseController
 {
-    public function showGarageAction()
+    public function viewGarageAction()
     {
         $player = $this->getUser();
         $playerCars = $player->getCars();
-        foreach($playerCars as $playerCar) {
-            var_dump($playerCar);
+
+        return $this->render('ZaZakretemGameBundle:Garage:viewGarage.html.twig', array('cars'=>$playerCars));
+    }
+
+    public function activateCarAction($playerCarId)
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $player = $this->getUser();
+        $playerCar = $em->getRepository('ZaZakretemModelsBundle:PlayerCar')->findOneBy(array('id'=>$playerCarId, 'player'=>$player));
+        if($playerCar) {
+            $player->setActiveCar($playerCar);
+
+            $em->persist($player);
+            $em->flush();
         }
-        exit();
+        return $this->redirectToRoute('view_garage');
     }
 
 }

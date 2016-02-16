@@ -20,4 +20,8 @@ view_auctions:
 
 view_garage:
     path: /viewGarage
-    defaults: { _controller: ZaZakretemGameBundle:Garage:showGarage }
+    defaults: { _controller: ZaZakretemGameBundle:Garage:viewGarage }
+
+activate_car:
+    path: /activateCar/{playerCarId}
+    defaults: { _controller: ZaZakretemGameBundle:Garage:activateCar }

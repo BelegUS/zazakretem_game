@@ -23,6 +23,9 @@ class Buyer
         $playerCar = $this->carProvider->provideStockCar($car);
         $playerCar->setPlayer($player);
 
+        if(!$player->hasActiveCar()) {
+            $player->setActiveCar($playerCar);
+        }
         $this->em->persist($player);
         $this->em->persist($playerCar);
         $this->em->flush();

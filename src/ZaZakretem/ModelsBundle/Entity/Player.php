@@ -70,6 +70,12 @@ class Player extends BaseUser
      */
     private $cars;
 
+    /**
+     * @ORM\OneToOne(targetEntity="PlayerCar")
+     * @ORM\JoinColumn(name="active_car_id", referencedColumnName="id")
+     */
+    private $activeCar;
+
     public function __construct() {
         parent::__construct();
         $this->cars = new ArrayCollection();
@@ -287,7 +293,7 @@ class Player extends BaseUser
     /**
      * Get cars
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return PlayerCar[]
      */
     public function getCars()
     {
@@ -331,5 +337,34 @@ class Player extends BaseUser
         }
         $newMoneyValue = $currentMoneyValue - $price;
         $this->setMoney($newMoneyValue);
+    }
+
+    /**
+     * Set activeCar
+     *
+     * @param \ZaZakretem\ModelsBundle\Entity\PlayerCar $activeCar
+     *
+     * @return Player
+     */
+    public function setActiveCar(\ZaZakretem\ModelsBundle\Entity\PlayerCar $activeCar = null)
+    {
+        $this->activeCar = $activeCar;
+
+        return $this;
+    }
+
+    /**
+     * Get activeCar
+     *
+     * @return \ZaZakretem\ModelsBundle\Entity\PlayerCar
+     */
+    public function getActiveCar()
+    {
+        return $this->activeCar;
+    }
+
+    public function hasActiveCar()
+    {
+        return (bool)$this->activeCar;
     }
 }

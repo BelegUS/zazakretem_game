@@ -3,12 +3,13 @@
 namespace ZaZakretem\ModelsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ZaZakretem\ModelsBundle\Interfaces\CarInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="players_cars")
  */
-class PlayerCar
+class PlayerCar implements CarInterface
 {
     /**
      * @ORM\Column(type="integer")
@@ -290,4 +291,81 @@ class PlayerCar
     {
         return $this->getAspirationPart()->getAspiration();
     }
+
+    public function getBrand()
+    {
+        return $this->getCar()->getBrand();
+    }
+
+    public function getBrandName()
+    {
+        return $this->getCar()->getBrandName();
+    }
+
+    public function getModelName()
+    {
+        return $this->getCar()->getModelName();
+    }
+
+    public function getDisplacement()
+    {
+        return $this->getCar()->getDisplacement();
+    }
+
+    public function getModelYear()
+    {
+        return $this->getCar()->getModelYear();
+    }
+
+    public function getHorsepower()
+    {
+        return $this->getCar()->getHorsepower();
+    }
+
+    public function getTorque()
+    {
+        return $this->getCar()->getTorque();
+    }
+
+    public function getMass()
+    {
+        return $this->getCar()->getMass();
+    }
+
+    public function getVmax()
+    {
+        return $this->getCar()->getVmax();
+    }
+
+    public function getAcceleration()
+    {
+        return $this->getCar()->getAcceleration();
+    }
+
+    public function getHandling()
+    {
+        return $this->getCar()->getHandling();
+    }
+
+    public function getPrice()
+    {
+        return $this->getCar()->getPrice(); //TODO: Price calculation
+    }
+
+    public function getDrivetrainName()
+    {
+        return $this->getDrivetrain()->getName();
+    }
+
+    public function getAspirationName()
+    {
+        return $this->getAspiration()->getName();
+    }
+
+    public function isActive()
+    {
+        return ($this->getPlayer()->getActiveCar() == $this);
+    }
+
+
 }

@@ -10,6 +10,7 @@ namespace ZaZakretem\GameBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Validator\Constraints\DateTime;
 use ZaZakretem\ModelsBundle\Entity\Aspiration;
 use ZaZakretem\ModelsBundle\Entity\AspirationPart;
 use ZaZakretem\ModelsBundle\Entity\Brand;
@@ -26,6 +27,27 @@ class BasicData implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
+
+        $standardPlayer = new Player();
+        $standardPlayer->setUsername('BelegUS');
+        $standardPlayer->setUsernameCanonical('belegus');
+        $standardPlayer->setEmail('belegussuicune@gmail.com');
+        $standardPlayer->setEmailCanonical('belegussuicune@gmail.com');
+        $standardPlayer->setEnabled(1);
+        $standardPlayer->setPassword('1ER/dOIKg6hs0LtRV4yrgEsS4RyzYK3xcNTcpJ3uEtkYNqkIjK5aaC4yylrTmftWWeVIQXbcCMLLvpYmd2E7Hg==');
+        $standardPlayer->setLocked(false);
+        $standardPlayer->setExpired(false);
+        $standardPlayer->setCredentialsExpired(false);
+        $standardPlayer->setRoles(array());
+        $standardPlayer->setRegistrationDate(new \DateTime());
+        $standardPlayer->setMoney(15000);
+        $standardPlayer->setSmartness(1);
+        $standardPlayer->setComposure(1);
+        $standardPlayer->setReflex(1);
+        $standardPlayer->setCourage(1);
+        $standardPlayer->setXp(0);
+        $manager->persist($standardPlayer);
+
         $ffDrivetrain = new Drivetrain();
         $ffDrivetrain->setDescription('Front Front drivetrain');
         $ffDrivetrain->setName('FF');
