@@ -25,3 +25,7 @@ view_garage:
 activate_car:
     path: /activateCar/{playerCarId}
     defaults: { _controller: ZaZakretemGameBundle:Garage:activateCar }
+
+view_track:
+  path: /touge/view/{trackId}
+  defaults: { _controller: ZaZakretemGameBundle:Touge:viewTrack }

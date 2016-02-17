@@ -11,6 +11,7 @@ namespace ZaZakretem\GameBundle\Menu;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use ZaZakretem\ModelsBundle\Entity\Player;
 
 class Builder implements ContainerAwareInterface
 {
@@ -20,11 +21,15 @@ class Builder implements ContainerAwareInterface
     {
         $menu = $factory->createItem('root');
 
+        $em = $this->container->get('doctrine')->getManager();
+        /**
+         * @var Player $player
+         */
+        $player = $this->container->get('security.token_storage')->getToken()->getUser();
+
         $menu->setChildrenAttribute('class', 'sidebar-menu');
         $menu->addChild('Dash', array('route' => '_index'));
 
-//        // access services from the container!
-//        $em = $this->container->get('doctrine')->getManager();
 //        // findMostRecent and Blog are just imaginary examples
 //        $blog = $em->getRepository('AppBundle:Blog')->findMostRecent();
 
@@ -36,7 +41,20 @@ class Builder implements ContainerAwareInterface
         // create another menu item
         $menu->addChild('Auctions', array('route' => 'view_auctions'));
 
-        $menu->addChild('Garage', array('route' => 'view_garage'));
+        if($player->hasActiveCar()) {
+            $menu->addChild('Garage', array('route' => 'view_garage'));
+
+            $menu->addChild('Go Touge');
+
+
+            $availableTracks = $em->getRepository('ZaZakretemModelsBundle:Track')->findAll();
+            foreach ($availableTracks as $track) {
+                $menu['Go Touge']->addChild($track->getName(), array(
+                    'route' => 'view_track',
+                    'routeParameters' => array('trackId' => $track->getId()),
+                ));
+            }
+        }
         // you can also add sub level's to your menu's as follows
 //        $menu['About Me']->addChild('Edit profile', array('route' => 'edit_profile'));
 
