@@ -44,7 +44,11 @@ class Builder implements ContainerAwareInterface
         if($player->hasActiveCar()) {
             $menu->addChild('Garage', array('route' => 'view_garage'));
 
-            $menu->addChild('Go Touge');
+            $menu->addChild('Go Touge', array(
+                'uri' => 'javascript:;',
+                'attributes'=>array('class'=>'sub-menu'),
+                'childrenAttributes'=>array('class'=>'sub')
+            ));
 
 
             $availableTracks = $em->getRepository('ZaZakretemModelsBundle:Track')->findAll();
