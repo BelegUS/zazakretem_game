@@ -20,7 +20,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "stof/doctrine-extensions-bundle": "^1.2",
-        "knplabs/knp-menu-bundle": "^2.0"
+        "knplabs/knp-menu-bundle": "^2.0",
+        "egeloen/google-map-bundle": "^2.2",
+        "widop/http-adapter-bundle": "^1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",

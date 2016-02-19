@@ -189,4 +189,30 @@ class Track
     {
         return $this->modificators;
     }
+
+    public function getStartLatitude()
+    {
+        $startCoordinates = json_decode($this->getStartCoordinatesJson());
+        return $startCoordinates->lat;
+    }
+
+    public function getStartLongitude()
+    {
+        $startCoordinates = json_decode($this->getStartCoordinatesJson());
+        return $startCoordinates->lon;
+    }
+
+    public function getEndLatitude()
+    {
+        $endCoordinates = json_decode($this->getEndCoordinatesJson());
+        return $endCoordinates->lat;
+    }
+
+    public function getEndLongitude()
+    {
+        $endCoordinates = json_decode($this->getEndCoordinatesJson());
+        return $endCoordinates->lon;
+    }
+
+
 }

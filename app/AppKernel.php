@@ -21,6 +21,8 @@ class AppKernel extends Kernel
             new ZaZakretem\ModelsBundle\ZaZakretemModelsBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new ZaZakretem\GameBundle\ZaZakretemGameBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new \Widop\HttpAdapterBundle\WidopHttpAdapterBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
