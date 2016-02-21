@@ -244,30 +244,6 @@ class Player extends BaseUser implements ChallengeableInterface
     }
 
     /**
-     * Set user
-     *
-     * @param \ZaZakretem\ModelsBundle\Entity\User $user
-     *
-     * @return Player
-     */
-    public function setUser(\ZaZakretem\ModelsBundle\Entity\User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \ZaZakretem\ModelsBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
-
-    /**
      * Add car
      *
      * @param \ZaZakretem\ModelsBundle\Entity\PlayerCar $car
