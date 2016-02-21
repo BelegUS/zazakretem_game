@@ -21,37 +21,24 @@ class TougeController extends BaseController
 {
     public function viewTrackAction($trackId)
     {
+        $player = $this->getUser();
         $track = $this->getDoctrine()->getRepository('ZaZakretemModelsBundle:Track')->find($trackId);
         if(empty($track)) {
             throw $this->createNotFoundException();
         }
 
+        $trackMapProvider = $this->get('track_map_provider');
+        $map = $trackMapProvider->getMap($track);
 
+        $opponentsProvider = $this->get('opponent_provider');
+        $opponents = $opponentsProvider->getOpponents($track, $player);
 
-        $directionsRequest = new DirectionsRequest();
-        $directionsRequest->setOrigin($track->getStartLatitude(), $track->getStartLongitude());
-        $directionsRequest->setDestination($track->getEndLatitude(), $track->getEndLongitude());
-        $directionsRequest->setTravelMode(TravelMode::DRIVING);
-        $directions = new Directions(new CurlHttpAdapter());
-        $response = $directions->route($directionsRequest);
+        return $this->render('ZaZakretemGameBundle:Touge:viewTrack.html.twig', array('map'=>$map, 'opponents'=>$opponents));
+    }
 
+    public function challengeOpponentAction()
+    {
 
-        $map = new Map();
-        $map->setCenter($track->getStartLatitude(), $track->getStartLongitude());
-        $map->setAutoZoom(false);
-        $map->setMapOption('zoom', 14);
-        $map->setMapOption('mapTypeId', MapTypeId::SATELLITE);
-        $map->setStylesheetOptions(array(
-            'width'  => '100%',
-            'height' => '300px',
-        ));
-
-        foreach ($response->getRoutes() as $route) {
-            $overviewPolyline = $route->getOverviewPolyline();
-            $map->addEncodedPolyline($overviewPolyline);
-        }
-
-        return $this->render('ZaZakretemGameBundle:Touge:viewTrack.html.twig', array('map'=>$map));
     }
 
 }

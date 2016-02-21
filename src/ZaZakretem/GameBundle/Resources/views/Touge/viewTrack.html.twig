@@ -2,4 +2,36 @@
 
 {% block main_content_wrapped %}
     {{ google_map(map) }}
+
+    <section class="panel">
+        <header class="panel-heading">
+            {{ 'Available opponents'|trans }}
+        </header>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>{{ 'Brand'|trans }}</th>
+                <th>{{ 'Model'|trans }}</th>
+                <th>{{ 'Power'|trans }}</th>
+                <th>{{ 'Torque'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for opponent in opponents %}
+                <tr>
+                    <td>{{ opponent.activeCar.brand.name }}</td>
+                    <td>{{ opponent.activeCar.modelName }}</td>
+                    <td>{{ opponent.activeCar.horsepower }}</td>
+                    <td>{{ opponent.activeCar.torque }}</td>
+                    <td>
+                        <a class="btn btn-sm" href="{{ path('challenge') }}">
+                            <span class="icon_search"></span>
+                            {{ 'Challenge opponent'|trans }}
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
 {% endblock %}

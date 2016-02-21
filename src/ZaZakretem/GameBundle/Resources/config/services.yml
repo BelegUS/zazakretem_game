@@ -1,3 +1,6 @@
+parameters:
+    app.opponent_provider.max_opponents_count: 6
+
 services:
 #    za_zakretem_game.example:
 #        class: ZaZakretem\GameBundle\Example
@@ -14,3 +17,10 @@ services:
     buyer:
         class: ZaZakretem\GameBundle\Services\Buyer
         arguments: [ @doctrine.orm.entity_manager, @car_provider ]
+
+    track_map_provider:
+        class: ZaZakretem\GameBundle\Services\TrackMapProvider
+
+    opponent_provider:
+        class: ZaZakretem\GameBundle\Services\OpponentProvider
+        arguments: [ @doctrine.orm.entity_manager, '%app.opponent_provider.max_opponents_count%']

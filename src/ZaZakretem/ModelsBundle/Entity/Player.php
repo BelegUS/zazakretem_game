@@ -7,13 +7,14 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ZaZakretem\GameBundle\Exceptions\NotEnoughMoneyException;
+use ZaZakretem\ModelsBundle\Interfaces\ChallengeableInterface;
 use ZaZakretem\ModelsBundle\Interfaces\HasPriceInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="players")
  */
-class Player extends BaseUser
+class Player extends BaseUser implements ChallengeableInterface
 {
     const BASE_MONEY = 15000;
     const BASE_SMARTNESS = 1;
